@@ -1,13 +1,13 @@
 import { authentication, createDirectus, readMe, rest } from '@directus/sdk';
-import { memoryStorage } from '../utils/storage';
 import { HOST_ENV } from '../utils/env';
+import { authStore } from '../stores/authStore';
 
 /**
  * Client with REST support and authetication, using local storage for json
  */
 export const client = createDirectus(HOST_ENV)
 	.with(rest({ credentials: 'same-origin' }))
-	.with(authentication('json', { storage: memoryStorage() }));
+	.with(authentication('json', { storage: authStore() }));
 
 /**
  * Log In
@@ -27,4 +27,8 @@ export const logOut = async () => await client.logout();
  * Get role of user
  * @returns
  */
-export const getRole = async () => await client.request(readMe({ fields: [{ role: ['name'] }] }));
+export const getRole = enabled => ({
+	queryKey: ['role'],
+	queryFn: async () => await client.request(readMe({ fields: [{ role: ['name'] }] })),
+	enabled: !!enabled,
+});

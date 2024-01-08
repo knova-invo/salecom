@@ -20,6 +20,7 @@
     "@solidjs/router": "^0.10.6",
     "@tanstack/solid-query": "^5.17.8",
     "dayjs": "^1.11.10",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.8.7",
     "solid-toast": "^0.5.0",
     "solid-zustand": "^1.7.1",
