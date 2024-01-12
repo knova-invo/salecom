@@ -12,7 +12,7 @@ function Login() {
 	const navigate = useNavigate();
 	const [token] = createResource(() => client.getToken());
 	const [disabled, setDisable] = createSignal(false);
-	const [_, loginForm] = createForm({ validate: valiForm(loginSchema) });
+	const [_, loginForm] = createForm({ validate: valiForm(loginSchema), initialValues: { email: '', password: '' } });
 
 	const handleSubmit = (data, event) => {
 		event.preventDefault();

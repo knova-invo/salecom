@@ -13,7 +13,6 @@ import { splitProps } from 'solid-js';
  */
 function TextInput(props) {
 	const [local, others] = splitProps(props, ['placeholder', 'label', 'type', 'error', 'id', 'required']);
-
 	return (
 		<div className='w-full'>
 			<label class='font-semibold' htmlFor={local.id}>

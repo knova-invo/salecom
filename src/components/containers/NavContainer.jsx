@@ -6,10 +6,10 @@ function NavContainer(props) {
 
 	return (
 		<>
-			<div class='flex-1'>{c()}</div>
-			<div class='relative bottom-0'>
+			<main class='flex-1 m-2'>{c()}</main>
+			<nav class='relative bottom-0'>
 				<BarNav />
-			</div>
+			</nav>
 		</>
 	);
 }

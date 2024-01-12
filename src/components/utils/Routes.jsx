@@ -7,16 +7,22 @@ import {
 	LOGOUT_PATH,
 	CASES_PATH,
 	CLIENTS_PATH,
-	PAY_PATH,
+	PAYMENTS_PATH,
+	NEW,
 } from '../../utils/path';
 import NavContainer from '../containers/NavContainer';
 import ProtectedRoutes from './ProtectedRoutes';
-import NotFound from '../../pages/NotFound';
-import Logout from '../../pages/Logout';
 import MatchHome from './MatchHome';
 import MatchSeller from './MatchSeller';
 
 const Login = lazy(() => import('../../pages/Login'));
+const Payments = lazy(() => import('../../pages/Payments'));
+const Clients = lazy(() => import('../../pages/Clients'));
+const CreateClient = lazy(() => import('../../pages/CreateClient'));
+const Cases = lazy(() => import('../../pages/Cases'));
+const CreateCases = lazy(() => import('../../pages/CreateCases'));
+const NotFound = lazy(() => import('../../pages/NotFound'));
+const Logout = lazy(() => import('../../pages/Logout'));
 
 function Routes() {
 	return (
@@ -25,13 +31,15 @@ function Routes() {
 				<Route path={ROOT_PATH} component={NavContainer}>
 					<Route path={ROOT_PATH} component={MatchHome} />
 					<Route path={CASES_PATH} component={MatchSeller}>
-						<Route path={ROOT_PATH} component={Aux} />
+						<Route path={ROOT_PATH} component={Cases} />
+						<Route path={NEW} component={CreateCases} />
 					</Route>
 					<Route path={CLIENTS_PATH} component={MatchSeller}>
-						<Route path={ROOT_PATH} component={AuxSe} />
+						<Route path={ROOT_PATH} component={Clients} />
+						<Route path={NEW} component={CreateClient} />
 					</Route>
-					<Route path={PAY_PATH} component={MatchSeller}>
-						<Route path={ROOT_PATH} component={AuxSi} />
+					<Route path={PAYMENTS_PATH} component={MatchSeller}>
+						<Route path={ROOT_PATH} component={Payments} />
 					</Route>
 				</Route>
 				<Route path={LOGOUT_PATH} component={Logout} />
@@ -42,18 +50,6 @@ function Routes() {
 			<Route path='*404' component={NotFound} />
 		</>
 	);
-}
-
-function Aux() {
-	return <div>App</div>;
-}
-
-function AuxSe() {
-	return <div>App2</div>;
-}
-
-function AuxSi() {
-	return <div>App3</div>;
 }
 
 export default Routes;

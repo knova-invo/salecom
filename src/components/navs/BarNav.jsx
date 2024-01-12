@@ -4,7 +4,7 @@ import { IoLogOutOutline } from 'solid-icons/io';
 import { FaSolidCarSide } from 'solid-icons/fa';
 import { IoDocumentText } from 'solid-icons/io';
 import { For } from 'solid-js';
-import { CASES_PATH, CLIENTS_PATH, LOGOUT_PATH, PAY_PATH } from '../../utils/path';
+import { CASES_PATH, CLIENTS_PATH, LOGOUT_PATH, PAYMENTS_PATH } from '../../utils/path';
 
 const unSelected =
 	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-yellow-500 group-hover:text-yellow-500';
@@ -18,7 +18,7 @@ function BarNav() {
 	const pages = [
 		{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
 		{ name: 'Clientes', icon: <FaSolidCarSide size={32} />, path: CLIENTS_PATH },
-		{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAY_PATH },
+		{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
 	];
 
 	return (
