@@ -6,8 +6,8 @@ import { authStore } from '../stores/authStore';
  * Client with REST support and authetication, using local storage for json
  */
 export const client = createDirectus(HOST_ENV)
-	.with(rest({ credentials: 'same-origin' }))
-	.with(authentication('json', { storage: authStore() }));
+	.with(rest())
+	.with(authentication('json', { storage: authStore(), autoRefresh: true }));
 
 /**
  * Log In

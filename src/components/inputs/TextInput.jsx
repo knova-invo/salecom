@@ -28,7 +28,7 @@ function TextInput(props) {
 				class={
 					local.error
 						? 'w-full p-2 border text-sm border-gray-300 rounded-md outline-none ring-1 ring-red-600 transition-colors duration-300'
-						: 'w-full p-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors duration-300'
+						: 'w-full p-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300'
 				}
 			/>
 			{local.error && <div class={'text-sm  text-red-600'}>{local.error}</div>}

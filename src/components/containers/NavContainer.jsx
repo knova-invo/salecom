@@ -6,7 +6,7 @@ function NavContainer(props) {
 
 	return (
 		<>
-			<main class='flex-1 m-2'>{c()}</main>
+			<main class='flex-1 m-2 overflow-auto flex'>{c()}</main>
 			<nav class='relative bottom-0'>
 				<BarNav />
 			</nav>

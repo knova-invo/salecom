@@ -20,7 +20,7 @@ const Payments = lazy(() => import('../../pages/Payments'));
 const Clients = lazy(() => import('../../pages/Clients'));
 const CreateClient = lazy(() => import('../../pages/CreateClient'));
 const Cases = lazy(() => import('../../pages/Cases'));
-const CreateCases = lazy(() => import('../../pages/CreateCases'));
+const CreateCase = lazy(() => import('../../pages/CreateCase'));
 const NotFound = lazy(() => import('../../pages/NotFound'));
 const Logout = lazy(() => import('../../pages/Logout'));
 
@@ -32,7 +32,7 @@ function Routes() {
 					<Route path={ROOT_PATH} component={MatchHome} />
 					<Route path={CASES_PATH} component={MatchSeller}>
 						<Route path={ROOT_PATH} component={Cases} />
-						<Route path={NEW} component={CreateCases} />
+						<Route path={NEW} component={CreateCase} />
 					</Route>
 					<Route path={CLIENTS_PATH} component={MatchSeller}>
 						<Route path={ROOT_PATH} component={Clients} />

@@ -12,7 +12,10 @@ function Login() {
 	const navigate = useNavigate();
 	const [token] = createResource(() => client.getToken());
 	const [disabled, setDisable] = createSignal(false);
-	const [_, loginForm] = createForm({ validate: valiForm(loginSchema), initialValues: { email: '', password: '' } });
+	const [_, { Form, Field }] = createForm({
+		validate: valiForm(loginSchema),
+		initialValues: { email: '', password: '' },
+	});
 
 	const handleSubmit = (data, event) => {
 		event.preventDefault();
@@ -27,10 +30,10 @@ function Login() {
 
 	return (
 		<Show when={!token()} fallback={<Navigate href={ROOT_REDIRECT_PATH} end={true} />}>
-			<loginForm.Form class='my-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
-				<div class='flex flex-col justify-center gap-6 p-8 m-4 bg-white rounded-md border border-gray-100 shadow-xl'>
+			<Form class='my-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
+				<div class='flex flex-col justify-center gap-6 p-8 m-4 bg-white rounded-md border border-gray-100 shadow-md'>
 					<h1 className='text-center text-2xl font-bold'>Inicio de sesión</h1>
-					<loginForm.Field name='email'>
+					<Field name='email'>
 						{(field, props) => (
 							<TextInput
 								placeholder='correo@gmail.com'
@@ -43,8 +46,8 @@ function Login() {
 								{...props}
 							/>
 						)}
-					</loginForm.Field>
-					<loginForm.Field name='password'>
+					</Field>
+					<Field name='password'>
 						{(field, props) => (
 							<TextInput
 								value={field.value}
@@ -58,12 +61,12 @@ function Login() {
 								{...props}
 							/>
 						)}
-					</loginForm.Field>
-					<Button disabled={disabled()} type={'submit'}>
+					</Field>
+					<Button disabled={disabled()} type='submit'>
 						Iniciar sesión
 					</Button>
 				</div>
-			</loginForm.Form>
+			</Form>
 		</Show>
 	);
 }

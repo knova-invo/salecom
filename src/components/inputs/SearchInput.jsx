@@ -5,7 +5,7 @@ function SearchInput(props) {
 	const [local, others] = splitProps(props, ['label', 'error', 'id', 'required']);
 
 	return (
-		<div class='flex items-center max-w-md mx-auto bg-white rounded-lg ' x-data="{ search: '' }">
+		<div class='flex items-center w-full max-w-md mx-auto bg-white rounded-lg ' x-data="{ search: '' }">
 			<div class='w-full'>
 				<input
 					{...others}
@@ -21,9 +21,9 @@ function SearchInput(props) {
 			<div>
 				<button
 					type='submit'
-					class='flex items-center justify-center w-12 h-12 text-white rounded-r-lg bg-blue-500 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-500'
+					class='flex items-center justify-center w-12 h-12 text-white rounded-r-lg bg-blue-500 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-100'
 				>
-					<AiOutlineSearch size={24} />
+					<AiOutlineSearch size={28} />
 				</button>
 			</div>
 		</div>

@@ -15,6 +15,9 @@ function ProtectedRoutes(props) {
 		if (query.isSuccess) {
 			role.setRole(query.data?.role?.name || '');
 		}
+		if (query.isError) {
+			console.log(query.error.errors[0]);
+		}
 	});
 
 	return (

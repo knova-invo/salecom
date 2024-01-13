@@ -7,10 +7,10 @@ import { For } from 'solid-js';
 import { CASES_PATH, CLIENTS_PATH, LOGOUT_PATH, PAYMENTS_PATH } from '../../utils/path';
 
 const unSelected =
-	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-yellow-500 group-hover:text-yellow-500';
+	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-indigo-500 group-hover:text-indigo-500';
 
 const selected =
-	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent text-yellow-500  border-yellow-500';
+	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent text-indigo-500 border-indigo-500';
 
 function BarNav() {
 	const location = useLocation();
@@ -43,7 +43,7 @@ function BarNav() {
 							<IoLogOutOutline size={32} />
 						</div>
 						<span class='block px-1'>
-							<i class='far fa-home text-xl mb-1 block' />
+							<i class='far fa-home text-xl mb-1 block ' />
 							<span class='block text-xs pb-1'>Salir</span>
 						</span>
 					</A>
