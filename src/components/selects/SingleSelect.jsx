@@ -11,6 +11,7 @@ import './styles/singleSelect.css';
  * @param {String} props.placeholer
  * @param {String} props.emptyPlaceholder
  * @param {String} props.error
+ * @param {Boolean} props.multiple
  * @param {Array<>} props.options
  * @param {Function} props.setValue
  * @returns
@@ -26,6 +27,7 @@ function SingleSelect(props) {
 			<Select
 				{...options}
 				id={props.id}
+				multiple={props.multiple}
 				placeholder={props.placeholer}
 				emptyPlaceholder={props.emptyPlaceholder}
 				onChange={selected => {

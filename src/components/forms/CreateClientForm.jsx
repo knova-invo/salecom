@@ -23,6 +23,8 @@ function CreateClientForm(props) {
 		initialValues: { id: '', color: 0, marca: 0 },
 	});
 
+	const handleBack = () => navigate(-1);
+
 	const handleSubmit = (data, event) => {
 		event.preventDefault();
 		const upperData = { ...data, id: data.id.toUpperCase() };
@@ -40,8 +42,6 @@ function CreateClientForm(props) {
 				return ErrorAlert('Error al guardar');
 			});
 	};
-
-	const handleBack = () => navigate(-1);
 
 	return (
 		<Form class='flex-1 w-full max-h-[85vh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
