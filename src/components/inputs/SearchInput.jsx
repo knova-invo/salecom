@@ -21,7 +21,7 @@ function SearchInput(props) {
 			<div>
 				<button
 					type='submit'
-					class='flex items-center justify-center w-12 h-12 text-white rounded-r-lg bg-blue-500 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-100'
+					class='flex items-center justify-center w-12 h-12 text-white rounded-r-lg bg-blue-500 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200'
 				>
 					<AiOutlineSearch size={28} />
 				</button>

@@ -1,25 +1,47 @@
-import { createForm, valiForm } from '@modular-forms/solid';
-import { Select, createOptions } from '@thisbeyond/solid-select';
-import { createSignal } from 'solid-js';
-import '@thisbeyond/solid-select/style.css';
-import TextInput from '../inputs/TextInput';
+import { createForm, setValue, valiForm } from '@modular-forms/solid';
+import { useNavigate } from '@solidjs/router';
 import { clientSellerSchema } from '../../schemas/clientSchema';
+import { createClient } from '../../clients/client.client';
+import SingleSelect from '../selects/SingleSelect';
+import SuccessAlert from '../alerts/SuccesAlert';
+import NumberInput from '../inputs/NumberInput';
+import ErrorAlert from '../alerts/ErrorAlert';
+import TextInput from '../inputs/TextInput';
 import Button from '../buttons/Button';
 
-function CreateClientForm() {
-	const selectOpt = createOptions(['apple', 'banana', 'pear', 'pineapple', 'kiwi']);
-
-	const [valueSelect, setValueSelect] = createSignal();
-	const [_, { Form, Field }] = createForm({
+/**
+ *
+ * @param {Object} props
+ * @param {Array} props.colors
+ * @param {Array} props.brands
+ * @returns
+ */
+function CreateClientForm(props) {
+	const navigate = useNavigate();
+	const [form, { Form, Field }] = createForm({
 		validate: valiForm(clientSellerSchema),
-		initialValues: { id: '', modelo: '' },
+		initialValues: { id: '', color: 0, marca: 0 },
 	});
 
 	const handleSubmit = (data, event) => {
 		event.preventDefault();
-		console.log(valueSelect());
-		console.log(data);
+		const upperData = { ...data, id: data.id.toUpperCase() };
+		console.log(upperData);
+		createClient(upperData)
+			.then(res => {
+				SuccessAlert();
+				handleBack();
+			})
+			.catch(err => {
+				console.log(err);
+				if (err.errors[0].extensions.code === 'RECORD_NOT_UNIQUE') {
+					return ErrorAlert('Placa ya registrada');
+				}
+				return ErrorAlert('Error al guardar');
+			});
 	};
+
+	const handleBack = () => navigate(-1);
 
 	return (
 		<Form class='flex-1 w-full max-h-[85vh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
@@ -28,29 +50,49 @@ function CreateClientForm() {
 				<Field name='id'>
 					{(field, props) => (
 						<TextInput
-							placeholder='correo@gmail.com'
+							placeholder='ABC·123'
 							label='Placa'
 							id='id-field'
+							autocomplete='off'
 							error={field.error}
 							value={field.value}
 							{...props}
 						/>
 					)}
 				</Field>
-				<Select
-					class='custom'
-					emptyPlaceholder='Sin opciones'
-					{...selectOpt}
-					onChange={selected => {
-						setValueSelect(selected);
-					}}
-				/>
-				<div>error</div>
-				<Field name='modelo'>
+				<Field name='color'>
+					{field => (
+						<SingleSelect
+							id='color-field'
+							options={props.colors}
+							labelOption='nombre'
+							label='Color'
+							error={field.error}
+							placeholer='Selecciona el color'
+							emptyPlaceholder='No existe'
+							setValue={value => setValue(form, 'color', value ? value.id : 0)}
+						/>
+					)}
+				</Field>
+
+				<Field name='marca'>
+					{field => (
+						<SingleSelect
+							id='marca-field'
+							options={props.brands}
+							labelOption='nombre'
+							label='Marca'
+							error={field.error}
+							placeholer='Selecciona la marca'
+							emptyPlaceholder='No existe'
+							setValue={value => setValue(form, 'marca', value ? value.id : 0)}
+						/>
+					)}
+				</Field>
+				<Field name='modelo' type='number'>
 					{(field, props) => (
-						<TextInput
-							placeholder='correo@gmail.com'
-							type='number'
+						<NumberInput
+							placeholder='2024'
 							label='Modelo'
 							id='modelo-field'
 							error={field.error}

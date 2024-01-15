@@ -1,6 +1,6 @@
+import { IoArrowBackOutline } from 'solid-icons/io';
 import { createForm } from '@modular-forms/solid';
 import { useNavigate } from '@solidjs/router';
-import { IoArrowBackOutline } from 'solid-icons/io';
 
 function CreateCase() {
 	const navigate = useNavigate();
@@ -13,7 +13,7 @@ function CreateCase() {
 			<button
 				onClick={handleBack}
 				type='button'
-				class='bg-orange-500 flex justify-center gap-1 items-center shadow-orange-500/20 hover:bg-orange-700 hover:shadow-orange-700/40 ripple-bg-orange-100 text-white rounded-full font-bold p-2 shadow-lg'
+				class='bg-orange-500 flex justify-center gap-1 items-center shadow-orange-500/20 hover:bg-orange-700 hover:shadow-orange-700/40 ripple-bg-orange-200 text-white rounded-full font-bold p-2 shadow-lg'
 			>
 				<IoArrowBackOutline size={22} />
 				<span>Volver</span>

@@ -1,4 +1,4 @@
-import { Show, Switch, children, createEffect, createResource, lazy } from 'solid-js';
+import { Show, children, createEffect, createResource, lazy } from 'solid-js';
 import { client, getRole } from '../../clients/client';
 import { createQuery } from '@tanstack/solid-query';
 import { roleStore } from '../../stores/userStore';
@@ -14,9 +14,6 @@ function ProtectedRoutes(props) {
 	createEffect(() => {
 		if (query.isSuccess) {
 			role.setRole(query.data?.role?.name || '');
-		}
-		if (query.isError) {
-			console.log(query.error.errors[0]);
 		}
 	});
 
