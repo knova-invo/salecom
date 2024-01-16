@@ -31,7 +31,7 @@ function CreateClientForm(props) {
 		console.log(upperData);
 		createClient(upperData)
 			.then(res => {
-				SuccessAlert();
+				SuccessAlert('Creado con éxito');
 				handleBack();
 			})
 			.catch(err => {
@@ -66,6 +66,7 @@ function CreateClientForm(props) {
 							id='color-field'
 							options={props.colors}
 							labelOption='nombre'
+							disabled={option => field.value === option.value.id}
 							label='Color'
 							error={field.error}
 							placeholer='Selecciona el color'
@@ -74,11 +75,11 @@ function CreateClientForm(props) {
 						/>
 					)}
 				</Field>
-
 				<Field name='marca'>
 					{field => (
 						<SingleSelect
 							id='marca-field'
+							disabled={option => field.value === option.value.id}
 							options={props.brands}
 							labelOption='nombre'
 							label='Marca'
@@ -102,7 +103,7 @@ function CreateClientForm(props) {
 					)}
 				</Field>
 				<Button type='submit' variant='success'>
-					Guardar cliente
+					Crear cliente
 				</Button>
 			</div>
 		</Form>

@@ -27,7 +27,7 @@ function CreateCase() {
 			</div>
 			<ErrorBoundary fallback={(err, reset) => reset()}>
 				<Switch>
-					<Match when={clients.isPending || services.isPending}>
+					<Match when={clients.isPending || services.isPending || clients.isRefetching || services.isRefetching}>
 						<Loading />
 					</Match>
 					<Match when={clients.isError || services.isError}>

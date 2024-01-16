@@ -11,6 +11,7 @@ import './styles/singleSelect.css';
  * @param {String} props.placeholer
  * @param {String} props.emptyPlaceholder
  * @param {String} props.error
+ * @param {Function} props.disabled
  * @param {Boolean} props.multiple
  * @param {Array<>} props.options
  * @param {Function} props.setValue
@@ -33,6 +34,7 @@ function SingleSelect(props) {
 				onChange={selected => {
 					props.setValue(selected || null);
 				}}
+				isOptionDisabled={props.disabled}
 				class='custom'
 			/>
 

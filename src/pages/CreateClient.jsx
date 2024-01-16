@@ -26,7 +26,7 @@ function CreateClient() {
 			</div>
 			<ErrorBoundary fallback={(err, reset) => reset()}>
 				<Switch>
-					<Match when={colors.isPending || brands.isPending}>
+					<Match when={colors.isPending || brands.isPending || colors.isRefetching || brands.isRefetching}>
 						<Loading />
 					</Match>
 					<Match when={colors.isError || brands.isError}>

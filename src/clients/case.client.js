@@ -1,4 +1,4 @@
-import { readItems } from '@directus/sdk';
+import { createItem, readItems } from '@directus/sdk';
 import { client } from './client';
 
 const services = 'servicios';
@@ -17,3 +17,7 @@ export const getServices = () => ({
 			}),
 		),
 });
+
+const cases = 'casos';
+
+export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));
