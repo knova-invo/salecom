@@ -1,20 +1,36 @@
-import { splitProps } from 'solid-js';
 import { AiOutlineSearch } from 'solid-icons/ai';
+import { createSignal } from 'solid-js';
 
+/**
+ *
+ * @param {Object} props
+ * @param {String} props.id
+ * @param {String} props.placeholder
+ * @param {Function} props.search
+ * @returns
+ */
 function SearchInput(props) {
-	const [local, others] = splitProps(props, ['label', 'error', 'id', 'required']);
+	const [search, setSearch] = createSignal('');
+
+	const handleChange = e => {
+		setSearch(e.target.value);
+	};
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		props.search(search());
+	};
 
 	return (
-		<div class='flex items-center w-full max-w-md mx-auto bg-white rounded-lg ' x-data="{ search: '' }">
+		<form class='flex items-center w-full max-w-md mx-auto bg-white rounded-lg' onSubmit={handleSubmit}>
 			<div class='w-full'>
 				<input
-					{...others}
-					id={local.id}
-					type={'search'}
-					required={local.required}
-					aria-invalid={local.error}
+					{...props}
+					id={props.id}
+					onChange={handleChange}
+					type='search'
 					class='w-full px-4 py-1 text-gray-800 rounded-full focus:outline-none'
-					placeholder='Buscar'
+					placeholder={props.placeholder || 'Buscar'}
 					x-model='search'
 				/>
 			</div>
@@ -26,7 +42,7 @@ function SearchInput(props) {
 					<AiOutlineSearch size={28} />
 				</button>
 			</div>
-		</div>
+		</form>
 	);
 }
 export default SearchInput;

@@ -19,6 +19,7 @@
     "@modular-forms/solid": "^0.20.0",
     "@solidjs/router": "^0.10.9",
     "@tanstack/solid-query": "^5.17.10",
+    "@tanstack/solid-table": "^8.11.6",
     "@thisbeyond/solid-select": "^0.14.0",
     "dayjs": "^1.11.10",
     "solid-icons": "^1.1.0",
