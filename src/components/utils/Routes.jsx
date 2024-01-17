@@ -12,17 +12,23 @@ import {
 } from '../../utils/path';
 import NavContainer from '../containers/NavContainer';
 import ProtectedRoutes from './ProtectedRoutes';
-import MatchHome from './MatchHome';
 import MatchSeller from './MatchSeller';
+import MatchHome from './MatchHome';
 
-const Login = lazy(() => import('../../pages/Login'));
-const Payments = lazy(() => import('../../pages/Payments'));
-const Clients = lazy(() => import('../../pages/Clients'));
-const CreateClient = lazy(() => import('../../pages/CreateClient'));
-const Cases = lazy(() => import('../../pages/Cases'));
-const CreateCase = lazy(() => import('../../pages/CreateCase'));
 const NotFound = lazy(() => import('../../pages/NotFound'));
 const Logout = lazy(() => import('../../pages/Logout'));
+const Login = lazy(() => import('../../pages/Login'));
+
+const Payments = lazy(() => import('../../pages/Payments'));
+const Payment = lazy(() => import('../../pages/Payment'));
+
+const CreateClient = lazy(() => import('../../pages/CreateClient'));
+const Clients = lazy(() => import('../../pages/Clients'));
+const Client = lazy(() => import('../../pages/Client'));
+
+const CreateCase = lazy(() => import('../../pages/CreateCase'));
+const Cases = lazy(() => import('../../pages/Cases'));
+const Case = lazy(() => import('../../pages/Case'));
 
 function Routes() {
 	return (
@@ -32,13 +38,16 @@ function Routes() {
 					<Route path={ROOT_PATH} component={MatchHome} />
 					<Route path={CASES_PATH} component={MatchSeller}>
 						<Route path={ROOT_PATH} component={Cases} />
+						<Route path='/:id' component={Case} />
 						<Route path={NEW} component={CreateCase} />
 					</Route>
 					<Route path={CLIENTS_PATH} component={MatchSeller}>
 						<Route path={ROOT_PATH} component={Clients} />
+						<Route path='/:id' component={Client} />
 						<Route path={NEW} component={CreateClient} />
 					</Route>
 					<Route path={PAYMENTS_PATH} component={MatchSeller}>
+						<Route path='/:id' component={Payment} />
 						<Route path={ROOT_PATH} component={Payments} />
 					</Route>
 				</Route>

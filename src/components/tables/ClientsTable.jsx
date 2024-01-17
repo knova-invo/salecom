@@ -1,5 +1,6 @@
 import { A } from '@solidjs/router';
 import { For } from 'solid-js';
+import { CLIENTS_PATH } from '../../utils/path';
 
 const titles = ['Cliente', 'Detalles'];
 
@@ -24,8 +25,8 @@ function ClientsTable(props) {
 							<tr class='hover:bg-gray-100 border-b text-sm'>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{client.id}</td>
 								<td class='w-1/6 whitespace-nowrap'>
-									<A class='text-sm font-semibold text-blue-600' href='/'>
-										Ver más
+									<A class='text-sm font-semibold text-blue-600' href={`${CLIENTS_PATH}/${client.id}`}>
+										Ver
 									</A>
 								</td>
 							</tr>

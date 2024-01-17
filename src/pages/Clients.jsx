@@ -24,7 +24,7 @@ function Clients() {
 
 	return (
 		<Show when={!isRouting()}>
-			<div className='flex-1'>
+			<div className='flex-1 max-w-full'>
 				<SearchInput id='search-clients' search={doSearch} />
 				<div class='fixed bottom-20 z-30 right-2'>
 					<A

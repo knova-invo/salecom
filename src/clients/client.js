@@ -1,13 +1,13 @@
 import { authentication, createDirectus, readMe, rest } from '@directus/sdk';
+import { storage } from '../utils/storage';
 import { HOST_ENV } from '../utils/env';
-import { authStore } from '../stores/authStore';
 
 /**
  * Client with REST support and authetication, using local storage for json
  */
 export const client = createDirectus(HOST_ENV)
 	.with(rest())
-	.with(authentication('json', { storage: authStore(), autoRefresh: true }));
+	.with(authentication('json', { storage: storage(), autoRefresh: true }));
 
 /**
  * Log In

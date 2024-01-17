@@ -1,7 +1,7 @@
 /**
  * Create a local storage for auth
  */
-export const authStore = () => {
+export const storage = () => {
 	try {
 		const localValue = localStorage.getItem('storage');
 		let store = localValue ? JSON.parse(localValue) : null;

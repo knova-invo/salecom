@@ -1,4 +1,5 @@
 import { createItem, readItems } from '@directus/sdk';
+import { limit } from '../utils/constants';
 import { client } from './client';
 
 const services = 'servicios';
@@ -19,5 +20,85 @@ export const getServices = () => ({
 });
 
 const cases = 'casos';
+
+/**
+ * Get the cases id
+ * @param {Number} page
+ * @param {String} search
+ * @returns
+ */
+export const getCasesTable = (page, search) => ({
+	queryKey: ['casesTable', page, search],
+	queryFn: async () =>
+		await client.request(
+			readItems(cases, {
+				page: page,
+				limit: limit,
+				fields: ['id', 'cliente', 'date_created', 'diagnostico', 'pago'],
+				...(search && { search: search }),
+			}),
+		),
+});
+
+/**
+ * Return count of cases
+ * @param {String} search
+ * @returns {Number}
+ */
+export const getCountCasesTable = search => ({
+	queryKey: ['casesCountTable', search],
+	queryFn: async () =>
+		await client.request(
+			readItems(cases, {
+				aggregate: { countDistinct: 'id' },
+				...(search && { search: search }),
+			}),
+		),
+});
+
+/**
+ * Get the cases id
+ * @param {Number} page
+ * @param {String} search
+ * @returns
+ */
+export const getPaymentsTable = (page, search) => ({
+	queryKey: ['paymentsTable', page, search],
+	queryFn: async () =>
+		await client.request(
+			readItems(cases, {
+				page: page,
+				limit: limit,
+				fields: ['id', 'pago', 'referencia', 'comision'],
+				filter: {
+					pago: {
+						_nnull: true,
+					},
+				},
+				...(search && { search: search }),
+			}),
+		),
+});
+
+/**
+ * Return count of cases
+ * @param {String} search
+ * @returns {Number}
+ */
+export const getCountPaymentsTable = search => ({
+	queryKey: ['paymentsCountTable', search],
+	queryFn: async () =>
+		await client.request(
+			readItems(cases, {
+				aggregate: { countDistinct: 'id' },
+				filter: {
+					pago: {
+						_nnull: true,
+					},
+				},
+				...(search && { search: search }),
+			}),
+		),
+});
 
 export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));

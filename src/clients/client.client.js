@@ -54,7 +54,7 @@ export const getClientsIds = () => ({
 });
 
 /**
- * Get the client name
+ * Get the clients id
  * @param {Number} page
  * @param {String} search
  * @returns
@@ -73,7 +73,7 @@ export const getClientsTable = (page, search) => ({
 });
 
 /**
- * Return count of client
+ * Return count of clients
  * @param {String} search
  * @returns {Number}
  */
