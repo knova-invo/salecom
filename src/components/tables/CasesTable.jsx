@@ -12,7 +12,7 @@ const titles = ['ID', 'Cliente', 'Estado', 'Detalles'];
  */
 function CasesTable(props) {
 	return (
-		<div class='mt-2 overflow-auto flex bg-white rounded-md shadow-md max-h-[75vh]'>
+		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
 			<table class='table-auto w-full text-center'>
 				<thead class='sticky top-0'>
 					<tr class='bg-gray-200 text-base font-semibold'>

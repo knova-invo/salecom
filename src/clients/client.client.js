@@ -1,4 +1,4 @@
-import { createItem, readItems } from '@directus/sdk';
+import { createItem, readItem, readItems } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
@@ -84,6 +84,31 @@ export const getCountClientsTable = search => ({
 			readItems(clients, {
 				aggregate: { countDistinct: 'id' },
 				...(search && { search: search }),
+			}),
+		),
+});
+
+/**
+ * Get the client
+ * @param {Number} id
+ * @returns
+ */
+export const getClient = id => ({
+	queryKey: ['client', id],
+	queryFn: async () =>
+		await client.request(
+			readItem(clients, id, {
+				fields: [
+					'id',
+					'modelo',
+					'nombre',
+					'cedula',
+					'telefono',
+					'correo',
+					'date_created',
+					{ marca: ['nombre'] },
+					{ color: ['nombre'] },
+				],
 			}),
 		),
 });

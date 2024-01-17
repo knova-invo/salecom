@@ -1,4 +1,4 @@
-import { createItem, readItems } from '@directus/sdk';
+import { createItem, readItem, readItems } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
@@ -99,6 +99,26 @@ export const getCountPaymentsTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+});
+
+/**
+ * Get the case
+ * @param {Number} id
+ * @returns
+ */
+export const getCase = id => ({
+	queryKey: ['case', id],
+	queryFn: async () => await client.request(readItem(cases, id)),
+});
+
+/**
+ * Get the payment
+ * @param {Number} id
+ * @returns
+ */
+export const getPayment = id => ({
+	queryKey: ['payment', id],
+	queryFn: async () => await client.request(readItem(cases, id)),
 });
 
 export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));

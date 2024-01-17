@@ -13,7 +13,7 @@ const titles = ['Comisión', 'Fecha de pago', 'Detalles'];
  */
 function PaymentsTable(props) {
 	return (
-		<div class='mt-2 relative overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
+		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
 			<table class='w-full text-center'>
 				<thead class='sticky top-0'>
 					<tr class='bg-gray-200 text-base font-semibold'>
