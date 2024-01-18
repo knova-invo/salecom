@@ -37,4 +37,5 @@ function ClientsTable(props) {
 		</div>
 	);
 }
+
 export default ClientsTable;

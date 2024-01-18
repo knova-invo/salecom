@@ -1,8 +1,8 @@
 import { Navigate } from '@solidjs/router';
-import Loading from '../../pages/Loading';
 import { Match, Switch } from 'solid-js';
 import { admin, seller } from '../../utils/constants';
 import { CASES_PATH } from '../../utils/path';
+import Loading from '../../pages/Loading';
 import Role from './Role';
 
 function MatchHome() {
@@ -19,4 +19,5 @@ function MatchHome() {
 		</Switch>
 	);
 }
+
 export default MatchHome;

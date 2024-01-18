@@ -52,4 +52,5 @@ function SearchInput(props) {
 		</form>
 	);
 }
+
 export default SearchInput;

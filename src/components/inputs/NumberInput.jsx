@@ -30,4 +30,5 @@ function NumberInput(props) {
 		</div>
 	);
 }
+
 export default NumberInput;

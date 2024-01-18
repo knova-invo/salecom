@@ -50,4 +50,5 @@ function CasesTable(props) {
 		</div>
 	);
 }
+
 export default CasesTable;

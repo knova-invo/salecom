@@ -52,4 +52,5 @@ function BarNav() {
 		</div>
 	);
 }
+
 export default BarNav;

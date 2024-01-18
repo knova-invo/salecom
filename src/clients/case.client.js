@@ -108,7 +108,19 @@ export const getCountPaymentsTable = search => ({
  */
 export const getCase = id => ({
 	queryKey: ['case', id],
-	queryFn: async () => await client.request(readItem(cases, id)),
+	queryFn: async () =>
+		await client.request(
+			readItem(cases, id, {
+				fields: [
+					'cliente',
+					'pago',
+					'comision',
+					'date_created',
+					'diagnostico',
+					{ servicios: [{ servicios_id: ['nombre'] }] },
+				],
+			}),
+		),
 });
 
 /**
@@ -118,7 +130,8 @@ export const getCase = id => ({
  */
 export const getPayment = id => ({
 	queryKey: ['payment', id],
-	queryFn: async () => await client.request(readItem(cases, id)),
+	queryFn: async () =>
+		await client.request(readItem(cases, id, { fields: ['cliente', 'pago', 'referencia', 'comision'] })),
 });
 
 export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));

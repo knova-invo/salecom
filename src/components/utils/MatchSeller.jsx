@@ -13,4 +13,5 @@ function MatchSeller(props) {
 		</Show>
 	);
 }
+
 export default MatchSeller;

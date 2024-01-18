@@ -41,4 +41,5 @@ function Case() {
 		</Show>
 	);
 }
+
 export default Case;

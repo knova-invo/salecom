@@ -42,4 +42,5 @@ function SingleSelect(props) {
 		</div>
 	);
 }
+
 export default SingleSelect;

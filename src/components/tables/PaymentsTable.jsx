@@ -39,4 +39,5 @@ function PaymentsTable(props) {
 		</div>
 	);
 }
+
 export default PaymentsTable;

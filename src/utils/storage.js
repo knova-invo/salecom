@@ -7,8 +7,8 @@ export const storage = () => {
 		let store = localValue ? JSON.parse(localValue) : null;
 
 		return {
-			get: () => store,
-			set: value => {
+			get: async () => store,
+			set: async value => {
 				store = value;
 				localStorage.setItem('storage', JSON.stringify(value));
 			},

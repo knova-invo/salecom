@@ -1,3 +1,4 @@
+import { useParams } from '@solidjs/router';
 import { For, createMemo } from 'solid-js';
 import dayjs from 'dayjs';
 
@@ -8,6 +9,7 @@ import dayjs from 'dayjs';
  * @returns
  */
 function ClientCard(props) {
+	const params = useParams();
 	const data = createMemo(() => {
 		return [
 			{ key: 'Fecha de registro', value: dayjs(props.client.date_created).format('DD/MM/YYYY') },
@@ -22,8 +24,8 @@ function ClientCard(props) {
 	});
 
 	return (
-		<div class='mt-2 bg-white rounded-md shadow-md p-4 text-center'>
-			<h1 class='text-2xl font-bold'>Cliente {props.client.id}</h1>
+		<div class='mt-2 bg-white rounded-md shadow-md p-4 text-left'>
+			<h1 class='text-2xl font-bold px-2'>Cliente {params.id}</h1>
 			<For each={data()}>
 				{item => (
 					<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
@@ -35,4 +37,5 @@ function ClientCard(props) {
 		</div>
 	);
 }
+
 export default ClientCard;

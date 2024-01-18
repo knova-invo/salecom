@@ -43,4 +43,5 @@ function Payments() {
 		</Show>
 	);
 }
+
 export default Payments;

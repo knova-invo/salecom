@@ -99,7 +99,6 @@ export const getClient = id => ({
 		await client.request(
 			readItem(clients, id, {
 				fields: [
-					'id',
 					'modelo',
 					'nombre',
 					'cedula',

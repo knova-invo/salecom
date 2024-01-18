@@ -63,4 +63,5 @@ function PaginationButton(props) {
 		</Show>
 	);
 }
+
 export default PaginationButton;
