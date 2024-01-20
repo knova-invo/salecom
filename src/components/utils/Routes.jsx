@@ -9,11 +9,15 @@ import {
 	CLIENTS_PATH,
 	PAYMENTS_PATH,
 	NEW,
+	PAYOUTS_PATH,
+	REVIEWS_PATH,
 } from '../../utils/path';
 import NavContainer from '../containers/NavContainer';
 import ProtectedRoutes from './ProtectedRoutes';
 import MatchSeller from './MatchSeller';
 import MatchHome from './MatchHome';
+import MathcTreasurer from './MathcTreasurer';
+import MatchReviewer from './MatchReviewer';
 
 const NotFound = lazy(() => import('../../pages/NotFound'));
 const Logout = lazy(() => import('../../pages/Logout'));
@@ -29,6 +33,12 @@ const Client = lazy(() => import('../../pages/Client'));
 const CreateCase = lazy(() => import('../../pages/CreateCase'));
 const Cases = lazy(() => import('../../pages/Cases'));
 const Case = lazy(() => import('../../pages/Case'));
+
+const Payouts = lazy(() => import('../../pages/Payouts'));
+const Payout = lazy(() => import('../../pages/Payout'));
+
+const Reviews = lazy(() => import('../../pages/Reviews'));
+const Review = lazy(() => import('../../pages/Review'));
 
 function Routes() {
 	return (
@@ -49,6 +59,14 @@ function Routes() {
 					<Route path={PAYMENTS_PATH} component={MatchSeller}>
 						<Route path='/:id' component={Payment} />
 						<Route path={ROOT_PATH} component={Payments} />
+					</Route>
+					<Route path={PAYOUTS_PATH} component={MathcTreasurer}>
+						<Route path='/:id' component={Payout} />
+						<Route path={ROOT_PATH} component={Payouts} />
+					</Route>
+					<Route path={REVIEWS_PATH} component={MatchReviewer}>
+						<Route path='/:id' component={Reviews} />
+						<Route path={ROOT_PATH} component={Review} />
 					</Route>
 				</Route>
 				<Route path={LOGOUT_PATH} component={Logout} />

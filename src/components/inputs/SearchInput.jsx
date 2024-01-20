@@ -21,7 +21,10 @@ function SearchInput(props) {
 	};
 
 	return (
-		<form class='flex items-center w-full max-w-md mx-auto bg-white rounded-lg' onSubmit={handleSubmit}>
+		<form
+			class='flex items-center w-full md:w-auto max-w-md mx-auto md:mx-0 bg-white rounded-lg'
+			onSubmit={handleSubmit}
+		>
 			<div class='w-full'>
 				<input
 					{...props}

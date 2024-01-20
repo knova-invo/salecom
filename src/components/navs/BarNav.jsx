@@ -5,6 +5,7 @@ import { FaSolidCarSide } from 'solid-icons/fa';
 import { IoDocumentText } from 'solid-icons/io';
 import { For } from 'solid-js';
 import { CASES_PATH, CLIENTS_PATH, LOGOUT_PATH, PAYMENTS_PATH } from '../../utils/path';
+import Role from '../utils/Role';
 
 const unSelected =
 	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-indigo-500 group-hover:text-indigo-500';
@@ -13,16 +14,19 @@ const selected =
 	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full border-b-2 border-transparent text-indigo-500 border-indigo-500';
 
 function BarNav() {
-	const pages = [
-		{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
-		{ name: 'Clientes', icon: <FaSolidCarSide size={32} />, path: CLIENTS_PATH },
-		{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
-	];
+	const { role } = Role;
+	const pages = {
+		vendedor: [
+			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
+			{ name: 'Clientes', icon: <FaSolidCarSide size={32} />, path: CLIENTS_PATH },
+			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
+		],
+	};
 
 	return (
 		<div class='px-2 bg-white pb-2'>
 			<div class='flex'>
-				<For each={pages}>
+				<For each={pages[role()]}>
 					{page => (
 						<div class='flex-1 group'>
 							<A href={page.path} inactiveClass={unSelected} activeClass={selected}>

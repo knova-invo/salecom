@@ -25,15 +25,17 @@ function Cases() {
 	return (
 		<Show when={!isRouting()}>
 			<div className='flex-1 max-w-full'>
-				<SearchInput id='search-cases' search={doSearch} />
-				<div class='fixed bottom-20 right-2'>
-					<A
-						href={NEW_CASES_PATH}
-						class='bg-blue-500 flex items-center gap-1 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200 text-white rounded-full font-bold py-2 px-4 shadow-lg'
-					>
-						<span>Añadir Caso</span>
-						<FaSolidPlus size={22} />
-					</A>
+				<div class='w-full md:w-1/2 md:mx-auto md:flex gap-4 justify-between'>
+					<div class='fixed bottom-20 z-30 right-2 md:static'>
+						<A
+							href={NEW_CASES_PATH}
+							class='bg-blue-500 flex items-center gap-1 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200 text-white rounded-full font-bold py-2 px-4 shadow-lg'
+						>
+							<span>Añadir Caso</span>
+							<FaSolidPlus size={22} />
+						</A>
+					</div>
+					<SearchInput id='search-cases' search={doSearch} />
 				</div>
 				<Switch>
 					<Match when={cases.isPending || cases.isRefetching || countCases.isPending || countCases.isRefetching}>
@@ -43,8 +45,10 @@ function Cases() {
 						<div>Error</div>
 					</Match>
 					<Match when={cases.isSuccess && countCases.isSuccess}>
-						<CasesTable cases={cases.data} />
-						<PaginationButton page={page()} setPage={setPage} count={countCases.data[0].countDistinct.id} />
+						<div class='w-full md:w-1/2 md:mx-auto'>
+							<CasesTable cases={cases.data} />
+							<PaginationButton page={page()} setPage={setPage} count={countCases.data[0].countDistinct.id} />
+						</div>
 					</Match>
 				</Switch>
 			</div>

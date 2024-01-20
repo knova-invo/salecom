@@ -23,8 +23,10 @@ function Payments() {
 
 	return (
 		<Show when={!isRouting()}>
-			<div className='flex-1 max-w-full'>
-				<SearchInput id='payments-cases' search={doSearch} />
+			<div className='flex-1 max-w-full '>
+				<div class='w-full md:w-1/2 md:mx-auto md:flex justify-end'>
+					<SearchInput id='payments-cases' search={doSearch} />
+				</div>
 				<Switch>
 					<Match
 						when={payments.isPending || payments.isRefetching || countPayments.isPending || countPayments.isRefetching}
@@ -35,8 +37,10 @@ function Payments() {
 						<div>Error</div>
 					</Match>
 					<Match when={payments.isSuccess && countPayments.isSuccess}>
-						<PaymentsTable payments={payments.data} />
-						<PaginationButton page={page()} setPage={setPage} count={countPayments.data[0].countDistinct.id} />
+						<div class='w-full md:w-1/2 md:mx-auto'>
+							<PaymentsTable payments={payments.data} />
+							<PaginationButton page={page()} setPage={setPage} count={countPayments.data[0].countDistinct.id} />
+						</div>
 					</Match>
 				</Switch>
 			</div>

@@ -25,15 +25,17 @@ function Clients() {
 	return (
 		<Show when={!isRouting()}>
 			<div className='flex-1 max-w-full'>
-				<SearchInput id='search-clients' search={doSearch} />
-				<div class='fixed bottom-20 z-30 right-2'>
-					<A
-						href={NEW_CLIENTS_PATH}
-						class='bg-blue-500 justify-center flex items-center gap-1 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200 text-white rounded-full font-bold py-2 px-4 shadow-lg'
-					>
-						<span>Añadir Cliente</span>
-						<FaSolidPlus size={22} />
-					</A>
+				<div class='w-full md:w-1/2 md:mx-auto md:flex gap-4 justify-between'>
+					<div class='fixed bottom-20 z-30 right-2 md:static'>
+						<A
+							href={NEW_CLIENTS_PATH}
+							class='bg-blue-500 justify-center flex items-center gap-1 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200 text-white rounded-full font-bold py-2 px-4 shadow-lg'
+						>
+							<span>Añadir Cliente</span>
+							<FaSolidPlus size={22} />
+						</A>
+					</div>
+					<SearchInput id='search-clients' search={doSearch} />
 				</div>
 				<Switch>
 					<Match
@@ -45,8 +47,10 @@ function Clients() {
 						<div>Error</div>
 					</Match>
 					<Match when={clients.isSuccess && countClients.isSuccess}>
-						<ClientsTable clients={clients.data} />
-						<PaginationButton page={page()} setPage={setPage} count={countClients.data[0].countDistinct.id} />
+						<div class='w-full md:w-1/2 md:mx-auto'>
+							<ClientsTable clients={clients.data} />
+							<PaginationButton page={page()} setPage={setPage} count={countClients.data[0].countDistinct.id} />
+						</div>
 					</Match>
 				</Switch>
 			</div>

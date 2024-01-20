@@ -13,3 +13,7 @@ export const CLIENTS_PATH = '/clients';
 export const NEW_CLIENTS_PATH = CLIENTS_PATH + NEW;
 
 export const PAYMENTS_PATH = '/payments';
+
+export const PAYOUTS_PATH = '/payouts';
+
+export const REVIEWS_PATH = '/reviews';
