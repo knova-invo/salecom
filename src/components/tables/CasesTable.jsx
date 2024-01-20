@@ -24,14 +24,10 @@ function CasesTable(props) {
 						{item => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{item.id}</td>
-
 								<td class='p-4 w-1/6 whitespace-nowrap'>{item.cliente}</td>
 								<Switch>
-									<Match when={item.pago}>
-										<td class='p-4 w-1/6 whitespace-nowrap font-semibold text-green-500'>Pagado</td>
-									</Match>
 									<Match when={item.diagnostico}>
-										<td class='p-4 w-1/6 whitespace-nowrap font-semibold text-amber-500'>Diagnosticado</td>
+										<td class='p-4 w-1/6 whitespace-nowrap font-semibold text-green-500'>Diagnosticado</td>
 									</Match>
 									<Match when={item.date_created}>
 										<td class='p-4 w-1/6 whitespace-nowrap font-semibold text-gray-500'>Pendiente</td>

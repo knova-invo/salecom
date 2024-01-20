@@ -1,5 +1,5 @@
 import { FaSolidMoneyBill } from 'solid-icons/fa';
-import { A, useLocation } from '@solidjs/router';
+import { A } from '@solidjs/router';
 import { IoLogOutOutline } from 'solid-icons/io';
 import { FaSolidCarSide } from 'solid-icons/fa';
 import { IoDocumentText } from 'solid-icons/io';
@@ -10,11 +10,9 @@ const unSelected =
 	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-indigo-500 group-hover:text-indigo-500';
 
 const selected =
-	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent text-indigo-500 border-indigo-500';
+	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full border-b-2 border-transparent text-indigo-500 border-indigo-500';
 
 function BarNav() {
-	const location = useLocation();
-
 	const pages = [
 		{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
 		{ name: 'Clientes', icon: <FaSolidCarSide size={32} />, path: CLIENTS_PATH },
@@ -25,9 +23,9 @@ function BarNav() {
 		<div class='px-2 bg-white pb-2'>
 			<div class='flex'>
 				<For each={pages}>
-					{(page, i) => (
+					{page => (
 						<div class='flex-1 group'>
-							<A href={page.path} class={location.pathname.includes(page.path) ? selected : unSelected}>
+							<A href={page.path} inactiveClass={unSelected} activeClass={selected}>
 								<div class='mx-auto pt-1'>{page.icon}</div>
 								<span class='block px-1'>
 									<i class='far fa-home text-xl mb-1 block' />

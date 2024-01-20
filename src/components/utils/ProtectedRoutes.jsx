@@ -1,4 +1,4 @@
-import { Show, children, createEffect, createResource, lazy } from 'solid-js';
+import { Show, createEffect, createResource, lazy } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
 import { client, getRole } from '../../clients/client';
 import Role from './Role';
@@ -7,9 +7,8 @@ const Login = lazy(() => import('../../pages/Login'));
 
 function ProtectedRoutes(props) {
 	const [token] = createResource(client.getToken);
-	const { setRole } = Role;
+	const { role, setRole } = Role;
 	const query = createQuery(() => getRole(token()));
-	const c = children(() => props.children);
 
 	createEffect(() => {
 		if (query.isSuccess) {
@@ -17,9 +16,13 @@ function ProtectedRoutes(props) {
 		}
 	});
 
+	createEffect(() => {
+		console.log(role());
+	});
+
 	return (
-		<Show when={token()} fallback={<Login />} keyed>
-			{c()}
+		<Show when={token()} fallback={<Login />}>
+			{props.children}
 		</Show>
 	);
 }

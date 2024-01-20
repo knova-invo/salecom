@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import dayjs from 'dayjs';
 import { PAYMENTS_PATH } from '../../utils/path';
 
-const titles = ['Comisión', 'Fecha de pago', 'Detalles'];
+const titles = ['Cliente', 'Comisión', 'Fecha de pago', 'Detalles'];
 
 /**
  *
@@ -24,8 +24,11 @@ function PaymentsTable(props) {
 					<For each={props.payments}>
 						{payment => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
+								<td class='p-4 w-1/6 whitespace-nowrap'>{payment.cliente}</td>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{payment.comision}</td>
-								<td class='p-4 w-1/6 whitespace-nowrap'>{dayjs(payment.pago).format('DD/MM/YYYY hh:mm a')}</td>
+								<td class='p-4 w-1/6 whitespace-nowrap'>
+									{payment.pago ? dayjs(payment.pago).format('DD/MM/YYYY') : ''}
+								</td>
 								<td class='w-1/6 whitespace-nowrap'>
 									<A class='text-sm font-semibold text-blue-600' href={`${PAYMENTS_PATH}/${payment.id}`}>
 										Ver

@@ -1,7 +1,7 @@
 import { Navigate } from '@solidjs/router';
 import { Match, Switch } from 'solid-js';
 import { admin, seller } from '../../utils/constants';
-import { CASES_PATH } from '../../utils/path';
+import { CASES_PATH, LOGOUT_PATH } from '../../utils/path';
 import Loading from '../../pages/Loading';
 import Role from './Role';
 
@@ -10,11 +10,11 @@ function MatchHome() {
 
 	return (
 		<Switch fallback={<Loading />}>
-			<Match when={role() === admin}>
-				<Navigate href={CASES_PATH} end={true} />
-			</Match>
 			<Match when={role() === seller}>
-				<Navigate href={CASES_PATH} end={true} />
+				<Navigate href={CASES_PATH} />
+			</Match>
+			<Match when={role() === admin}>
+				<Navigate href={LOGOUT_PATH} />
 			</Match>
 		</Switch>
 	);

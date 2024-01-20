@@ -3,15 +3,20 @@ import ErrorAlert from '../components/alerts/ErrorAlert';
 import Button from '../components/buttons/Button';
 import { LOGIN_PATH } from '../utils/path';
 import { logOut } from '../clients/client';
+import Role from '../components/utils/Role';
 
 function Logout() {
 	const navigate = useNavigate();
+	const { setRole } = Role;
 
 	const handleBack = () => navigate(-1);
 
 	const handleLogOut = () => {
 		logOut()
-			.then(res => navigate(LOGIN_PATH))
+			.then(res => {
+				setRole('');
+				navigate(LOGIN_PATH);
+			})
 			.catch(err => ErrorAlert('Error al cerrar sesión'));
 	};
 

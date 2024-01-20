@@ -34,7 +34,13 @@ export const getCasesTable = (page, search) => ({
 			readItems(cases, {
 				page: page,
 				limit: limit,
-				fields: ['id', 'cliente', 'date_created', 'diagnostico', 'pago'],
+				fields: ['id', 'cliente', 'date_created', 'diagnostico'],
+				filter: {
+					pago: {
+						_null: true,
+					},
+				},
+
 				...(search && { search: search }),
 			}),
 		),
@@ -51,6 +57,11 @@ export const getCountCasesTable = search => ({
 		await client.request(
 			readItems(cases, {
 				aggregate: { countDistinct: 'id' },
+				filter: {
+					pago: {
+						_null: true,
+					},
+				},
 				...(search && { search: search }),
 			}),
 		),
@@ -69,7 +80,7 @@ export const getPaymentsTable = (page, search) => ({
 			readItems(cases, {
 				page: page,
 				limit: limit,
-				fields: ['id', 'pago', 'referencia', 'comision'],
+				fields: ['id', 'cliente', 'pago', 'referencia', 'comision'],
 				filter: {
 					pago: {
 						_nnull: true,
@@ -131,7 +142,9 @@ export const getCase = id => ({
 export const getPayment = id => ({
 	queryKey: ['payment', id],
 	queryFn: async () =>
-		await client.request(readItem(cases, id, { fields: ['cliente', 'pago', 'referencia', 'comision'] })),
+		await client.request(
+			readItem(cases, id, { fields: ['cliente', 'pago', 'referencia', 'comision', 'date_created'] }),
+		),
 });
 
 export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));

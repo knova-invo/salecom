@@ -12,9 +12,14 @@ function CaseCard(props) {
 	const data = createMemo(() => {
 		return [
 			{ key: 'Cliente', value: props.case.cliente },
-			{ key: 'Fecha de registro', value: dayjs(props.case.date_created).format('DD/MM/YYYY') },
-			{ key: 'Fecha de diagnóstico', value: dayjs(props.case.diagnostico).format('DD/MM/YYYY') },
-			{ key: 'Fecha de pago', value: dayjs(props.case.pago).format('DD/MM/YYYY') },
+			{
+				key: 'Fecha de registro',
+				value: props.case.date_created ? dayjs(props.case.date_created).format('DD/MM/YYYY') : '',
+			},
+			{
+				key: 'Fecha de diagnóstico',
+				value: props.case.diagnostico ? dayjs(props.case.diagnostico).format('DD/MM/YYYY') : '',
+			},
 			{ key: 'Comisión', value: props.case.comision },
 			{ key: 'Servicios', value: props.case.servicios.map(item => item.servicios_id.nombre).join(', ') },
 		];

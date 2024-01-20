@@ -13,7 +13,14 @@ function PaymentCard(props) {
 	const data = createMemo(() => {
 		return [
 			{ key: 'Comisión', value: props.payment.comision },
-			{ key: 'Fecha de pago', value: dayjs(props.payment.date_created).format('DD/MM/YYYY') },
+			{
+				key: 'Fecha de pago',
+				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
+			},
+			{
+				key: 'Fecha de registro',
+				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
+			},
 			{ key: 'ID del Caso', value: params.id },
 			{ key: 'Cliente del caso', value: props.payment.cliente },
 			{ key: 'Referencia de pago', value: props.payment.referencia },

@@ -12,7 +12,10 @@ function ClientCard(props) {
 	const params = useParams();
 	const data = createMemo(() => {
 		return [
-			{ key: 'Fecha de registro', value: dayjs(props.client.date_created).format('DD/MM/YYYY') },
+			{
+				key: 'Fecha de registro',
+				value: props.client.date_created ? dayjs(props.client.date_created).format('DD/MM/YYYY') : '',
+			},
 			{ key: 'Color', value: props.client.color.nombre },
 			{ key: 'Marca', value: props.client.marca.nombre },
 			{ key: 'Modelo', value: props.client.modelo },
