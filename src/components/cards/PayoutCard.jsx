@@ -4,32 +4,33 @@ import dayjs from 'dayjs';
 /**
  *
  * @param {Object} props
- * @param {Object} props.review
+ * @param {Object} props.payout
  * @returns
  */
-function ReviewCard(props) {
+function PayoutCard(props) {
 	const params = useParams();
 	const data = createMemo(() => {
 		return [
-			{ key: 'Vehículo', value: props.review.vehiculo },
+			{ key: 'Vehículo', value: props.payout.vehiculo },
 			{
 				key: 'Vendedor',
-				value: `${props.review.vendedor?.first_name || ''} ${props.review.vendedor?.last_name || ''}`,
+				value: `${props.payout.vendedor?.first_name || ''} ${props.payout.vendedor?.last_name || ''}`,
 			},
 			{
 				key: 'Fecha de registro',
-				value: props.review.date_created ? dayjs(props.review.date_created).format('DD/MM/YYYY') : '',
+				value: props.payout.date_created ? dayjs(props.payout.date_created).format('DD/MM/YYYY') : '',
 			},
 			{
 				key: 'Fecha de diagnóstico',
-				value: props.review.diagnostico ? dayjs(props.review.diagnostico).format('DD/MM/YYYY') : '',
+				value: props.payout.diagnostico ? dayjs(props.payout.diagnostico).format('DD/MM/YYYY') : '',
 			},
 			{
 				key: 'Fecha de pago',
-				value: props.review.pago ? dayjs(props.review.pago).format('DD/MM/YYYY') : '',
+				value: props.payout.pago ? dayjs(props.payout.pago).format('DD/MM/YYYY') : '',
 			},
-			{ key: 'Comisión', value: props.review.comision },
-			{ key: 'Servicios', value: props.review.servicios.map(item => item.servicios_id.nombre).join(', ') },
+			{ key: 'Comisión', value: props.payout.comision },
+			{ key: 'Referencia', value: props.payout.referencia },
+			{ key: 'Servicios', value: props.payout.servicios.map(item => item.servicios_id.nombre).join(', ') },
 		];
 	});
 	return (
@@ -47,4 +48,4 @@ function ReviewCard(props) {
 	);
 }
 
-export default ReviewCard;
+export default PayoutCard;

@@ -5,23 +5,32 @@ import { client } from './client';
 const cases = 'casos';
 
 /**
- * Get the cases id to review
+ * Get the cases id to pay
  * @param {Number} page
  * @param {String} search
  * @returns
  */
-export const getReviewsTable = (page, search) => ({
-	queryKey: ['reviewsTable', page, search],
+export const getPayoutsTable = (page, search) => ({
+	queryKey: ['payoutsTable', page, search],
 	queryFn: async () =>
 		await client.request(
 			readItems(cases, {
 				page: page,
 				limit: limit,
-				fields: ['id', 'vehiculo', { vendedor: ['first_name', 'last_name'] }],
+				fields: ['id', 'vehiculo', 'comision', { vendedor: ['first_name', 'last_name'] }],
 				filter: {
-					diagnostico: {
-						_null: true,
-					},
+					_and: [
+						{
+							pago: {
+								_null: true,
+							},
+						},
+						{
+							diagnostico: {
+								_nnull: true,
+							},
+						},
+					],
 				},
 
 				...(search && { search: search }),
@@ -30,20 +39,29 @@ export const getReviewsTable = (page, search) => ({
 });
 
 /**
- * Return count of cases to review
+ * Return count of cases to pay
  * @param {String} search
  * @returns {Number}
  */
-export const getCountReviewsTable = search => ({
-	queryKey: ['reviewsCountTable', search],
+export const getCountPayoutsTable = search => ({
+	queryKey: ['payoutsCountTable', search],
 	queryFn: async () =>
 		await client.request(
 			readItems(cases, {
 				aggregate: { countDistinct: 'id' },
 				filter: {
-					diagnostico: {
-						_null: true,
-					},
+					_and: [
+						{
+							pago: {
+								_null: true,
+							},
+						},
+						{
+							diagnostico: {
+								_nnull: true,
+							},
+						},
+					],
 				},
 				...(search && { search: search }),
 			}),
@@ -51,21 +69,21 @@ export const getCountReviewsTable = search => ({
 });
 
 /**
- * Get the cases id reviewed
+ * Get the cases id paid
  * @param {Number} page
  * @param {String} search
  * @returns
  */
-export const getReviewsHisTable = (page, search) => ({
-	queryKey: ['reviewsHisTable', page, search],
+export const getPayoutsHisTable = (page, search) => ({
+	queryKey: ['payoutsHisTable', page, search],
 	queryFn: async () =>
 		await client.request(
 			readItems(cases, {
 				page: page,
 				limit: limit,
-				fields: ['id', 'vehiculo', 'diagnostico', { vendedor: ['first_name', 'last_name'] }],
+				fields: ['id', 'vehiculo', 'pago', { vendedor: ['first_name', 'last_name'] }],
 				filter: {
-					diagnostico: {
+					pago: {
 						_nnull: true,
 					},
 				},
@@ -76,18 +94,18 @@ export const getReviewsHisTable = (page, search) => ({
 });
 
 /**
- * Return count of cases reviews
+ * Return count of cases paid
  * @param {String} search
  * @returns {Number}
  */
-export const getCountReviewsHisTable = search => ({
-	queryKey: ['reviewsHisCountTable', search],
+export const getCountPayoutsHisTable = search => ({
+	queryKey: ['payoutsHisCountTable', search],
 	queryFn: async () =>
 		await client.request(
 			readItems(cases, {
 				aggregate: { countDistinct: 'id' },
 				filter: {
-					diagnostico: {
+					pago: {
 						_nnull: true,
 					},
 				},
@@ -97,12 +115,12 @@ export const getCountReviewsHisTable = search => ({
 });
 
 /**
- * Get the case reviewd
+ * Get the case paid
  * @param {Number} id
  * @returns
  */
-export const getReview = id => ({
-	queryKey: ['review', id],
+export const getPayout = id => ({
+	queryKey: ['payout', id],
 	queryFn: async () =>
 		await client.request(
 			readItem(cases, id, {
@@ -112,6 +130,7 @@ export const getReview = id => ({
 					'comision',
 					'date_created',
 					'diagnostico',
+					'referencia',
 					'pago',
 					{ vendedor: ['first_name', 'last_name'] },
 					{ servicios: [{ servicios_id: ['nombre'] }] },
