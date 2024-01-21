@@ -16,7 +16,7 @@ function Vehicle() {
 	return (
 		<Show when={!isRouting()}>
 			<div class='flex-1 flex flex-col'>
-				<div>
+				<div class='md:w-1/2 md:mx-auto'>
 					<button
 						onClick={handleBack}
 						type='button'
@@ -34,7 +34,9 @@ function Vehicle() {
 						<div>Error</div>
 					</Match>
 					<Match when={vehicle.isSuccess}>
-						<VehicleCard vehicle={vehicle.data} />
+						<div class='md:w-1/2 md:mx-auto'>
+							<VehicleCard vehicle={vehicle.data} />
+						</div>
 					</Match>
 				</Switch>
 			</div>

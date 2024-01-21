@@ -16,12 +16,10 @@ import {
 } from '../../utils/path';
 import NavContainer from '../containers/NavContainer';
 import ProtectedRoutes from './ProtectedRoutes';
-import MatchSeller from './MatchSeller';
-import MatchHome from './MatchHome';
 import MathcTreasurer from './MathcTreasurer';
 import MatchReviewer from './MatchReviewer';
-import RHistory from '../../pages/RHistory';
-import PHistory from '../../pages/PHistory';
+import MatchSeller from './MatchSeller';
+import MatchHome from './MatchHome';
 
 const NotFound = lazy(() => import('../../pages/NotFound'));
 const Logout = lazy(() => import('../../pages/Logout'));
@@ -38,9 +36,13 @@ const CreateCase = lazy(() => import('../../pages/CreateCase'));
 const Cases = lazy(() => import('../../pages/Cases'));
 const Case = lazy(() => import('../../pages/Case'));
 
+const CreatePayout = lazy(() => import('../../pages/CreatePayout'));
+const PHistory = lazy(() => import('../../pages/PHistory'));
 const Payouts = lazy(() => import('../../pages/Payouts'));
 const Payout = lazy(() => import('../../pages/Payout'));
 
+const CreateReview = lazy(() => import('../../pages/CreateReview'));
+const RHistory = lazy(() => import('../../pages/RHistory'));
 const Reviews = lazy(() => import('../../pages/Reviews'));
 const Review = lazy(() => import('../../pages/Review'));
 
@@ -65,17 +67,19 @@ function Routes() {
 						<Route path={ROOT_PATH} component={Payments} />
 					</Route>
 					<Route path={PAYOUTS_PATH} component={MathcTreasurer}>
-						<Route path='/:id' component={Payout} />
+						<Route path='/:id' component={CreatePayout} />
 						<Route path={ROOT_PATH} component={Payouts} />
 					</Route>
 					<Route path={HISTORY_PAYOUTS_PATH} component={MathcTreasurer}>
+						<Route path='/:id' component={Payout} />
 						<Route path={ROOT_PATH} component={PHistory} />
 					</Route>
 					<Route path={REVIEWS_PATH} component={MatchReviewer}>
-						<Route path='/:id' component={Review} />
+						<Route path='/:id' component={CreateReview} />
 						<Route path={ROOT_PATH} component={Reviews} />
 					</Route>
 					<Route path={HISTORY_REVIEWS_PATH} component={MatchReviewer}>
+						<Route path='/:id' component={Review} />
 						<Route path={ROOT_PATH} component={RHistory} />
 					</Route>
 				</Route>

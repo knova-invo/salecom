@@ -1,7 +1,7 @@
 import { Show } from 'solid-js';
 import { treasurer } from '../../utils/constants';
-import Role from './Role';
 import MatchHome from './MatchHome';
+import Role from './Role';
 
 function MathcTreasurer(props) {
 	const { role } = Role;

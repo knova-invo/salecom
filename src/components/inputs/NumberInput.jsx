@@ -1,7 +1,7 @@
 import { createMemo } from 'solid-js';
 
 function NumberInput(props) {
-	const getValue = createMemo(prevValue => (!Number.isNaN(props.value) ? props.value : undefined));
+	const getValue = createMemo(prevValue => (!Number.isNaN(props.value) ? props.value : prevValue));
 
 	return (
 		<div>

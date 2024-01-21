@@ -1,8 +1,9 @@
 import { A } from '@solidjs/router';
 import { For } from 'solid-js';
-import { REVIEWS_PATH } from '../../utils/path';
+import dayjs from 'dayjs';
+import { HISTORY_REVIEWS_PATH } from '../../utils/path';
 
-const titles = ['Vehículo', 'Vendedor', 'Comisionar'];
+const titles = ['Vehículo', 'Vendedor', 'Fecha', 'Detalles'];
 
 /**
  *
@@ -10,7 +11,7 @@ const titles = ['Vehículo', 'Vendedor', 'Comisionar'];
  * @param {Array} props.reviews
  * @returns
  */
-function ReviewsTable(props) {
+function RHistoryTable(props) {
 	return (
 		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75dvh]'>
 			<table class='table-auto w-full text-center'>
@@ -25,9 +26,12 @@ function ReviewsTable(props) {
 							<tr class='hover:bg-gray-100 border-b text-sm'>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{item.vehiculo}</td>
 								<td class='p-4 w-1/6'>{`${item.vendedor?.first_name || ''} ${item.vendedor?.last_name || ''}`}</td>
+								<td class='p-4 w-1/6 whitespace-nowrap'>
+									{item.diagnostico ? dayjs(item.diagnostico).format('DD/MM/YYYY') : ''}
+								</td>
 								<td class='w-1/6 whitespace-nowrap'>
-									<A class='text-sm font-semibold text-blue-600' href={`${REVIEWS_PATH}/${item.id}`}>
-										Comisionar
+									<A class='text-sm font-semibold text-blue-600' href={`${HISTORY_REVIEWS_PATH}/${item.id}`}>
+										Más
 									</A>
 								</td>
 							</tr>
@@ -39,4 +43,4 @@ function ReviewsTable(props) {
 	);
 }
 
-export default ReviewsTable;
+export default RHistoryTable;

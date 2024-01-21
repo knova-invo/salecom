@@ -16,7 +16,7 @@ function Payment() {
 	return (
 		<Show when={!isRouting()}>
 			<div class='flex-1 flex flex-col'>
-				<div>
+				<div class='md:w-1/2 md:mx-auto'>
 					<button
 						onClick={handleBack}
 						type='button'
@@ -34,7 +34,9 @@ function Payment() {
 						<div>Error</div>
 					</Match>
 					<Match when={payment.isSuccess}>
-						<PaymentCard payment={payment.data} />
+						<div class='md:w-1/2 md:mx-auto'>
+							<PaymentCard payment={payment.data} />
+						</div>
 					</Match>
 				</Switch>
 			</div>

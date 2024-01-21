@@ -1,9 +1,9 @@
 import { useNavigate } from '@solidjs/router';
 import ErrorAlert from '../components/alerts/ErrorAlert';
 import Button from '../components/buttons/Button';
+import Role from '../components/utils/Role';
 import { LOGIN_PATH } from '../utils/path';
 import { logOut } from '../clients/client';
-import Role from '../components/utils/Role';
 
 function Logout() {
 	const navigate = useNavigate();

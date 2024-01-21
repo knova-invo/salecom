@@ -1,7 +1,7 @@
 import { Show } from 'solid-js';
 import { reviewer } from '../../utils/constants';
-import Role from './Role';
 import MatchHome from './MatchHome';
+import Role from './Role';
 
 function MatchReviewer(props) {
 	const { role } = Role;

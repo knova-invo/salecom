@@ -1,7 +1,7 @@
 import { Navigate } from '@solidjs/router';
 import { Match, Switch } from 'solid-js';
-import { admin, reviewer, seller, treasurer } from '../../utils/constants';
 import { CASES_PATH, LOGOUT_PATH, PAYOUTS_PATH, REVIEWS_PATH } from '../../utils/path';
+import { admin, reviewer, seller, treasurer } from '../../utils/constants';
 import Loading from '../../pages/Loading';
 import Role from './Role';
 

@@ -1,7 +1,6 @@
 import { authentication, createDirectus, readMe, rest } from '@directus/sdk';
 import { storage } from '../utils/storage';
 import { HOST_ENV } from '../utils/env';
-import { createQuery } from '@tanstack/solid-query';
 
 /**
  * Client with REST support and authetication, using local storage for json

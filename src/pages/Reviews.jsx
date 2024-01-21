@@ -2,12 +2,12 @@ import { Match, Show, Switch, createSignal } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
 import { A, useIsRouting } from '@solidjs/router';
 import { FaSolidPlus } from 'solid-icons/fa';
+import { getCountReviewsTable, getReviewsTable } from '../clients/review.client';
 import PaginationButton from '../components/buttons/PaginationButton';
+import ReviewsTable from '../components/tables/ReviewsTable';
 import SearchInput from '../components/inputs/SearchInput';
 import { NEW_CASES_PATH } from '../utils/path';
 import Loading from './Loading';
-import { getCountReviewsTable, getReviewsTable } from '../clients/review.client';
-import ReviewsTable from '../components/tables/ReviewsTable';
 
 function Reviews() {
 	const isRouting = useIsRouting();
