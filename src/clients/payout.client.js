@@ -1,4 +1,4 @@
-import { readItem, readItems } from '@directus/sdk';
+import { readItem, readItems, updateItem } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
@@ -138,3 +138,5 @@ export const getPayout = id => ({
 			}),
 		),
 });
+
+export const createPayout = async (id, data) => await client.request(updateItem(cases, id, data, { fields: ['id'] }));
