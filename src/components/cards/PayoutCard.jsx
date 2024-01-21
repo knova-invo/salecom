@@ -17,15 +17,15 @@ function PayoutCard(props) {
 				value: `${props.payout.vendedor?.first_name || ''} ${props.payout.vendedor?.last_name || ''}`,
 			},
 			{
-				key: 'Fecha de registro',
+				key: 'Registro',
 				value: props.payout.date_created ? dayjs(props.payout.date_created).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de diagnóstico',
+				key: 'Diagnóstico',
 				value: props.payout.diagnostico ? dayjs(props.payout.diagnostico).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de pago',
+				key: 'Pago',
 				value: props.payout.pago ? dayjs(props.payout.pago).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'Comisión', value: props.payout.comision },

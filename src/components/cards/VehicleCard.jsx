@@ -13,7 +13,7 @@ function VehicleCard(props) {
 	const data = createMemo(() => {
 		return [
 			{
-				key: 'Fecha de registro',
+				key: 'Registro',
 				value: props.vehicle.date_created ? dayjs(props.vehicle.date_created).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'Color', value: props.vehicle.color.nombre },

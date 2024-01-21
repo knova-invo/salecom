@@ -1,4 +1,4 @@
-import { readItem, readItems } from '@directus/sdk';
+import { readItem, readItems, updateItem } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
@@ -17,7 +17,12 @@ export const getReviewsTable = (page, search) => ({
 			readItems(cases, {
 				page: page,
 				limit: limit,
-				fields: ['id', 'vehiculo', { vendedor: ['first_name', 'last_name'] }],
+				fields: [
+					'id',
+					{ vehiculo: ['id', 'modelo', { color: ['nombre'] }, { marca: ['nombre'] }] },
+					{ vendedor: ['first_name', 'last_name'] },
+				],
+				sort: ['-date_created'],
 				filter: {
 					diagnostico: {
 						_null: true,
@@ -64,6 +69,7 @@ export const getReviewsHisTable = (page, search) => ({
 				page: page,
 				limit: limit,
 				fields: ['id', 'vehiculo', 'diagnostico', { vendedor: ['first_name', 'last_name'] }],
+				sort: ['-diagnostico'],
 				filter: {
 					diagnostico: {
 						_nnull: true,
@@ -107,7 +113,7 @@ export const getReview = id => ({
 		await client.request(
 			readItem(cases, id, {
 				fields: [
-					'vehiculo',
+					{ vehiculo: ['id', 'modelo', { color: ['nombre'] }, { marca: ['nombre'] }] },
 					'pago',
 					'comision',
 					'date_created',
@@ -119,3 +125,5 @@ export const getReview = id => ({
 			}),
 		),
 });
+
+export const createReview = async (id, data) => await client.request(updateItem(cases, id, data, { fields: ['id'] }));

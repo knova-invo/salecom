@@ -13,11 +13,11 @@ function CaseCard(props) {
 		return [
 			{ key: 'Vehículo', value: props.case.vehiculo },
 			{
-				key: 'Fecha de registro',
+				key: 'FRegistro',
 				value: props.case.date_created ? dayjs(props.case.date_created).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de diagnóstico',
+				key: 'Diagnóstico',
 				value: props.case.diagnostico ? dayjs(props.case.diagnostico).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'Comisión', value: props.case.comision },

@@ -18,6 +18,7 @@ export const getPayoutsTable = (page, search) => ({
 				page: page,
 				limit: limit,
 				fields: ['id', 'vehiculo', 'comision', { vendedor: ['first_name', 'last_name'] }],
+				sort: ['-diagnostico'],
 				filter: {
 					_and: [
 						{
@@ -82,6 +83,7 @@ export const getPayoutsHisTable = (page, search) => ({
 				page: page,
 				limit: limit,
 				fields: ['id', 'vehiculo', 'pago', { vendedor: ['first_name', 'last_name'] }],
+				sort: ['-pago'],
 				filter: {
 					pago: {
 						_nnull: true,

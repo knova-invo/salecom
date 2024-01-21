@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import dayjs from 'dayjs';
 import { PAYMENTS_PATH } from '../../utils/path';
 
-const titles = ['Vehículo', 'Comisión', 'Fecha de pago', 'Detalles'];
+const titles = ['Vehículo', 'Comisión', 'Pago', 'Detalles'];
 
 /**
  *

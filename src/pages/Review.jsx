@@ -35,7 +35,7 @@ function Review() {
 					</Match>
 					<Match when={review.isSuccess}>
 						<div class='md:w-1/2 md:mx-auto'>
-							<ReviewCard case={review.data} />
+							<ReviewCard review={review.data} />
 						</div>
 					</Match>
 				</Switch>

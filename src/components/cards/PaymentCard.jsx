@@ -14,11 +14,11 @@ function PaymentCard(props) {
 		return [
 			{ key: 'Comisión', value: props.payment.comision },
 			{
-				key: 'Fecha de pago',
+				key: 'Pago',
 				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de registro',
+				key: 'Registro',
 				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'ID del Caso', value: params.id },

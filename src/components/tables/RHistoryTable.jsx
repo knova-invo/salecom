@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import dayjs from 'dayjs';
 import { HISTORY_REVIEWS_PATH } from '../../utils/path';
 
-const titles = ['Vehículo', 'Vendedor', 'Fecha', 'Detalles'];
+const titles = ['Vehículo', 'Vendedor', 'Diagnóstico', 'Detalles'];
 
 /**
  *

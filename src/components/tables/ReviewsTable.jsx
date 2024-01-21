@@ -23,7 +23,9 @@ function ReviewsTable(props) {
 					<For each={props.reviews}>
 						{item => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
-								<td class='p-4 w-1/6 whitespace-nowrap'>{item.vehiculo}</td>
+								<td class='p-4 w-1/6 whitespace-nowrap'>{`${item.vehiculo.id} ${item.vehiculo?.marca.nombre || ''} ${
+									item.vehiculo?.color.nombre || ''
+								} ${item.vehiculo.modelo || ''}`}</td>
 								<td class='p-4 w-1/6'>{`${item.vendedor?.first_name || ''} ${item.vendedor?.last_name || ''}`}</td>
 								<td class='w-1/6 whitespace-nowrap'>
 									<A class='text-sm font-semibold text-blue-600' href={`${REVIEWS_PATH}/${item.id}`}>

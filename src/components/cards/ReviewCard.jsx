@@ -11,21 +11,24 @@ function ReviewCard(props) {
 	const params = useParams();
 	const data = createMemo(() => {
 		return [
-			{ key: 'Vehículo', value: props.review.vehiculo },
+			{ key: 'Vehículo', value: props.review.vehiculo.id },
+			{ key: 'Color', value: props.review.vehiculo.color.nombre || '' },
+			{ key: 'Marca', value: props.review.vehiculo.marca.nombre || '' },
+			{ key: 'Modelo', value: props.review.vehiculo.modelo || '' },
 			{
 				key: 'Vendedor',
 				value: `${props.review.vendedor?.first_name || ''} ${props.review.vendedor?.last_name || ''}`,
 			},
 			{
-				key: 'Fecha de registro',
+				key: 'Registro',
 				value: props.review.date_created ? dayjs(props.review.date_created).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de diagnóstico',
+				key: 'Diagnóstico',
 				value: props.review.diagnostico ? dayjs(props.review.diagnostico).format('DD/MM/YYYY') : '',
 			},
 			{
-				key: 'Fecha de pago',
+				key: 'Pago',
 				value: props.review.pago ? dayjs(props.review.pago).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'Comisión', value: props.review.comision },
