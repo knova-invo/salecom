@@ -36,17 +36,17 @@ export const getBrands = () => ({
 		),
 });
 
-const clients = 'clientes';
+const vehicles = 'vehiculos';
 
 /**
- * Get all clients id
+ * Get all vehicles id
  * @returns
  */
-export const getClientsIds = () => ({
-	queryKey: ['clientsIds'],
+export const getVehiclesIds = () => ({
+	queryKey: ['vehiclesIds'],
 	queryFn: async () =>
 		await client.request(
-			readItems(clients, {
+			readItems(vehicles, {
 				limit: -1,
 				fields: ['id'],
 			}),
@@ -54,16 +54,16 @@ export const getClientsIds = () => ({
 });
 
 /**
- * Get the clients id
+ * Get the vehicles id
  * @param {Number} page
  * @param {String} search
  * @returns
  */
-export const getClientsTable = (page, search) => ({
-	queryKey: ['clientsTable', page, search],
+export const getVehiclesTable = (page, search) => ({
+	queryKey: ['vehiclesTable', page, search],
 	queryFn: async () =>
 		await client.request(
-			readItems(clients, {
+			readItems(vehicles, {
 				page: page,
 				limit: limit,
 				fields: ['id'],
@@ -73,15 +73,15 @@ export const getClientsTable = (page, search) => ({
 });
 
 /**
- * Return count of clients
+ * Return count of vehicles
  * @param {String} search
  * @returns {Number}
  */
-export const getCountClientsTable = search => ({
-	queryKey: ['clientsCountTable', search],
+export const getCountVehiclesTable = search => ({
+	queryKey: ['vehiclesCountTable', search],
 	queryFn: async () =>
 		await client.request(
-			readItems(clients, {
+			readItems(vehicles, {
 				aggregate: { countDistinct: 'id' },
 				...(search && { search: search }),
 			}),
@@ -93,11 +93,11 @@ export const getCountClientsTable = search => ({
  * @param {Number} id
  * @returns
  */
-export const getClient = id => ({
-	queryKey: ['client', id],
+export const getVehicle = id => ({
+	queryKey: ['vehicle', id],
 	queryFn: async () =>
 		await client.request(
-			readItem(clients, id, {
+			readItem(vehicles, id, {
 				fields: [
 					'modelo',
 					'nombre',
@@ -117,4 +117,4 @@ export const getClient = id => ({
  * @param {*} data
  * @returns
  */
-export const createClient = async data => client.request(createItem(clients, data, { fields: ['id'] }));
+export const createVehicle = async data => client.request(createItem(vehicles, data, { fields: ['id'] }));

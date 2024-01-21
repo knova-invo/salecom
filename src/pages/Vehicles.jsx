@@ -2,14 +2,14 @@ import { Match, Show, Switch, createSignal } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
 import { A, useIsRouting } from '@solidjs/router';
 import { FaSolidPlus } from 'solid-icons/fa';
-import { getClientsTable, getCountClientsTable } from '../clients/client.client';
+import { getVehiclesTable, getCountVehiclesTable } from '../clients/vehicle.client';
 import PaginationButton from '../components/buttons/PaginationButton';
-import ClientsTable from '../components/tables/ClientsTable';
+import VehiclesTable from '../components/tables/VehiclesTable';
 import SearchInput from '../components/inputs/SearchInput';
-import { NEW_CLIENTS_PATH } from '../utils/path';
+import { NEW_VEHICLES_PATH } from '../utils/path';
 import Loading from './Loading';
 
-function Clients() {
+function Vehicles() {
 	const isRouting = useIsRouting();
 	const [page, setPage] = createSignal(1);
 	const [search, setSearch] = createSignal('');
@@ -19,8 +19,8 @@ function Clients() {
 		setPage(1);
 	};
 
-	const clients = createQuery(() => getClientsTable(page(), search()));
-	const countClients = createQuery(() => getCountClientsTable(search()));
+	const vehicles = createQuery(() => getVehiclesTable(page(), search()));
+	const countVehicles = createQuery(() => getCountVehiclesTable(search()));
 
 	return (
 		<Show when={!isRouting()}>
@@ -28,7 +28,7 @@ function Clients() {
 				<div class='w-full md:w-1/2 md:mx-auto md:flex gap-4 justify-between'>
 					<div class='fixed bottom-20 z-30 right-2 md:static'>
 						<A
-							href={NEW_CLIENTS_PATH}
+							href={NEW_VEHICLES_PATH}
 							class='bg-blue-500 justify-center flex items-center gap-1 shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-700/40 ripple-bg-blue-200 text-white rounded-full font-bold py-2 px-4 shadow-lg'
 						>
 							<span>Añadir Vehículo</span>
@@ -39,17 +39,17 @@ function Clients() {
 				</div>
 				<Switch>
 					<Match
-						when={clients.isPending || clients.isRefetching || countClients.isPending || countClients.isRefetching}
+						when={vehicles.isPending || vehicles.isRefetching || countVehicles.isPending || countVehicles.isRefetching}
 					>
 						<Loading />
 					</Match>
-					<Match when={clients.isError || countClients.isError}>
+					<Match when={vehicles.isError || countVehicles.isError}>
 						<div>Error</div>
 					</Match>
-					<Match when={clients.isSuccess && countClients.isSuccess}>
+					<Match when={vehicles.isSuccess && countVehicles.isSuccess}>
 						<div class='w-full md:w-1/2 md:mx-auto'>
-							<ClientsTable clients={clients.data} />
-							<PaginationButton page={page()} setPage={setPage} count={countClients.data[0].countDistinct.id} />
+							<VehiclesTable vehicles={vehicles.data} />
+							<PaginationButton page={page()} setPage={setPage} count={countVehicles.data[0].countDistinct.id} />
 						</div>
 					</Match>
 				</Switch>
@@ -58,4 +58,4 @@ function Clients() {
 	);
 }
 
-export default Clients;
+export default Vehicles;

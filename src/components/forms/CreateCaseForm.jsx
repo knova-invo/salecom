@@ -2,7 +2,7 @@ import { createForm, setValue, valiForm } from '@modular-forms/solid';
 import { A, useNavigate } from '@solidjs/router';
 import { createCase } from '../../clients/case.client';
 import { caseSchema } from '../../schemas/caseSchema';
-import { NEW_CLIENTS_PATH } from '../../utils/path';
+import { NEW_VEHICLES_PATH } from '../../utils/path';
 import SingleSelect from '../selects/SingleSelect';
 import SuccessAlert from '../alerts/SuccesAlert';
 import ErrorAlert from '../alerts/ErrorAlert';
@@ -11,7 +11,7 @@ import Button from '../buttons/Button';
 /**
  *
  * @param {Object} props
- * @param {Array} props.clients
+ * @param {Array} props.vehicles
  * @param {Array} props.services
  * @returns
  */
@@ -20,7 +20,7 @@ function CreateCaseForm(props) {
 
 	const [form, { Form, Field }] = createForm({
 		validate: valiForm(caseSchema),
-		initialValues: { cliente: '', servicios: [] },
+		initialValues: { vehiculo: '', servicios: [] },
 	});
 
 	const handleBack = () => navigate(-1);
@@ -48,11 +48,11 @@ function CreateCaseForm(props) {
 		<Form class='flex-1 w-full max-h-[85dvh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
 			<div class='flex flex-col justify-center p-4 mx-1 my-4 bg-white border-gray-100 shadow-md rounded-md border'>
 				<h1 class='text-center text-2xl font-bold mb-4'>Añadir Caso</h1>
-				<Field name='cliente'>
+				<Field name='vehiculo'>
 					{field => (
 						<SingleSelect
-							id='cliente-field'
-							options={props.clients}
+							id='vehiculo-field'
+							options={props.vehicles}
 							value={field.value}
 							disabled={option => field.value === option.label}
 							labelOption='id'
@@ -60,11 +60,11 @@ function CreateCaseForm(props) {
 							error={field.error}
 							placeholer='Selecciona un vehículo'
 							emptyPlaceholder='No existe'
-							setValue={value => setValue(form, 'cliente', value ? value.id : '')}
+							setValue={value => setValue(form, 'vehiculo', value ? value.id : '')}
 						/>
 					)}
 				</Field>
-				<A href={NEW_CLIENTS_PATH} class='ml-auto text-sm font-semibold text-blue-600'>
+				<A href={NEW_VEHICLES_PATH} class='ml-auto text-sm font-semibold text-blue-600'>
 					Crear un nuevo vehículo
 				</A>
 				<Field name='servicios'>

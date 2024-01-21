@@ -3,12 +3,12 @@ import { IoArrowBackOutline } from 'solid-icons/io';
 import { createQuery } from '@tanstack/solid-query';
 import { Match, Show, Switch } from 'solid-js';
 import CreateCaseForm from '../components/forms/CreateCaseForm';
-import { getClientsIds } from '../clients/client.client';
+import { getVehiclesIds } from '../clients/vehicle.client';
 import { getServices } from '../clients/case.client';
 import Loading from './Loading';
 
 function CreateCase() {
-	const clients = createQuery(getClientsIds);
+	const vehicles = createQuery(getVehiclesIds);
 	const services = createQuery(getServices);
 	const isRouting = useIsRouting();
 	const navigate = useNavigate();
@@ -28,14 +28,14 @@ function CreateCase() {
 					</button>
 				</div>
 				<Switch>
-					<Match when={clients.isPending || services.isPending || clients.isRefetching || services.isRefetching}>
+					<Match when={vehicles.isPending || services.isPending || vehicles.isRefetching || services.isRefetching}>
 						<Loading />
 					</Match>
-					<Match when={clients.isError || services.isError}>
+					<Match when={vehicles.isError || services.isError}>
 						<div>Error</div>
 					</Match>
-					<Match when={clients.isSuccess && services.isSuccess}>
-						<CreateCaseForm clients={clients.data} services={services.data} />
+					<Match when={vehicles.isSuccess && services.isSuccess}>
+						<CreateCaseForm vehicles={vehicles.data} services={services.data} />
 					</Match>
 				</Switch>
 			</div>

@@ -22,7 +22,7 @@ function PaymentCard(props) {
 				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'ID del Caso', value: params.id },
-			{ key: 'Vehículo del caso', value: props.payment.cliente },
+			{ key: 'Vehículo del caso', value: props.payment.vehiculo },
 			{ key: 'Referencia de pago', value: props.payment.referencia },
 		];
 	});

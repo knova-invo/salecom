@@ -1,16 +1,16 @@
-import { useIsRouting, useNavigate } from '@solidjs/router';
-import { IoArrowBackOutline } from 'solid-icons/io';
+import { useIsRouting, useNavigate, useParams } from '@solidjs/router';
 import { createQuery } from '@tanstack/solid-query';
-import { Match, Switch } from 'solid-js';
-import CreateClientForm from '../components/forms/CreateClientForm';
-import { getBrands, getColors } from '../clients/client.client';
+import { IoArrowBackOutline } from 'solid-icons/io';
+import { Match, Show, Switch } from 'solid-js';
+import VehicleCard from '../components/cards/VehicleCard';
+import { getVehicle } from '../clients/vehicle.client';
 import Loading from './Loading';
 
-function CreateClient() {
-	const colors = createQuery(getColors);
-	const brands = createQuery(getBrands);
-	const navigate = useNavigate();
+function Vehicle() {
+	const params = useParams();
+	const vehicle = createQuery(() => getVehicle(params.id));
 	const isRouting = useIsRouting();
+	const navigate = useNavigate();
 	const handleBack = () => navigate(-1);
 
 	return (
@@ -27,14 +27,14 @@ function CreateClient() {
 					</button>
 				</div>
 				<Switch>
-					<Match when={colors.isPending || brands.isPending || colors.isRefetching || brands.isRefetching}>
+					<Match when={vehicle.isPending || vehicle.isRefetching}>
 						<Loading />
 					</Match>
-					<Match when={colors.isError || brands.isError}>
+					<Match when={vehicle.isError}>
 						<div>Error</div>
 					</Match>
-					<Match when={colors.isSuccess && brands.isSuccess}>
-						<CreateClientForm colors={colors.data} brands={brands.data} />
+					<Match when={vehicle.isSuccess}>
+						<VehicleCard vehicle={vehicle.data} />
 					</Match>
 				</Switch>
 			</div>
@@ -42,4 +42,4 @@ function CreateClient() {
 	);
 }
 
-export default CreateClient;
+export default Vehicle;

@@ -5,24 +5,24 @@ import dayjs from 'dayjs';
 /**
  *
  * @param {Object} props
- * @param {Object} props.client
+ * @param {Object} props.vehicle
  * @returns
  */
-function ClientCard(props) {
+function VehicleCard(props) {
 	const params = useParams();
 	const data = createMemo(() => {
 		return [
 			{
 				key: 'Fecha de registro',
-				value: props.client.date_created ? dayjs(props.client.date_created).format('DD/MM/YYYY') : '',
+				value: props.vehicle.date_created ? dayjs(props.vehicle.date_created).format('DD/MM/YYYY') : '',
 			},
-			{ key: 'Color', value: props.client.color.nombre },
-			{ key: 'Marca', value: props.client.marca.nombre },
-			{ key: 'Modelo', value: props.client.modelo },
-			{ key: 'Nombre', value: props.client.nombre },
-			{ key: 'Cedula', value: props.client.cedula },
-			{ key: 'Teléfono', value: props.client.telefono },
-			{ key: 'Correo', value: props.client.correo },
+			{ key: 'Color', value: props.vehicle.color.nombre },
+			{ key: 'Marca', value: props.vehicle.marca.nombre },
+			{ key: 'Modelo', value: props.vehicle.modelo },
+			{ key: 'Nombre', value: props.vehicle.nombre },
+			{ key: 'Cedula', value: props.vehicle.cedula },
+			{ key: 'Teléfono', value: props.vehicle.telefono },
+			{ key: 'Correo', value: props.vehicle.correo },
 		];
 	});
 
@@ -41,4 +41,4 @@ function ClientCard(props) {
 	);
 }
 
-export default ClientCard;
+export default VehicleCard;

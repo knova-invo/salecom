@@ -9,8 +9,8 @@ export const EDIT = '/edit';
 export const CASES_PATH = '/cases';
 export const NEW_CASES_PATH = CASES_PATH + NEW;
 
-export const CLIENTS_PATH = '/clients';
-export const NEW_CLIENTS_PATH = CLIENTS_PATH + NEW;
+export const VEHICLES_PATH = '/vehicles';
+export const NEW_VEHICLES_PATH = VEHICLES_PATH + NEW;
 
 export const PAYMENTS_PATH = '/payments';
 

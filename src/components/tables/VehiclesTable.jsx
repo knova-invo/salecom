@@ -1,16 +1,16 @@
 import { A } from '@solidjs/router';
 import { For } from 'solid-js';
-import { CLIENTS_PATH } from '../../utils/path';
+import { VEHICLES_PATH } from '../../utils/path';
 
 const titles = ['Vehículo', 'Detalles'];
 
 /**
  *
  * @param {Object} props
- * @param {Array} props.clients
+ * @param {Array} props.vehicles
  * @returns
  */
-function ClientsTable(props) {
+function VehiclesTable(props) {
 	return (
 		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75dvh]'>
 			<table class='table-auto w-full text-center'>
@@ -20,12 +20,12 @@ function ClientsTable(props) {
 					</tr>
 				</thead>
 				<tbody>
-					<For each={props.clients}>
+					<For each={props.vehicles}>
 						{client => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{client.id}</td>
 								<td class='w-1/6 whitespace-nowrap'>
-									<A class='text-sm font-semibold text-blue-600' href={`${CLIENTS_PATH}/${client.id}`}>
+									<A class='text-sm font-semibold text-blue-600' href={`${VEHICLES_PATH}/${client.id}`}>
 										Ver
 									</A>
 								</td>
@@ -38,4 +38,4 @@ function ClientsTable(props) {
 	);
 }
 
-export default ClientsTable;
+export default VehiclesTable;

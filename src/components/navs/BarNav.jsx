@@ -4,7 +4,7 @@ import { IoLogOutOutline } from 'solid-icons/io';
 import { FaSolidCarSide } from 'solid-icons/fa';
 import { IoDocumentText } from 'solid-icons/io';
 import { For } from 'solid-js';
-import { CASES_PATH, CLIENTS_PATH, LOGOUT_PATH, PAYMENTS_PATH, PAYOUTS_PATH, REVIEWS_PATH } from '../../utils/path';
+import { CASES_PATH, VEHICLES_PATH, LOGOUT_PATH, PAYMENTS_PATH, PAYOUTS_PATH, REVIEWS_PATH } from '../../utils/path';
 import Role from '../utils/Role';
 
 const unSelected =
@@ -20,7 +20,7 @@ function BarNav() {
 		tesorera: [{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYOUTS_PATH }],
 		vendedor: [
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
-			{ name: 'Vehículs', icon: <FaSolidCarSide size={32} />, path: CLIENTS_PATH },
+			{ name: 'Vehículs', icon: <FaSolidCarSide size={32} />, path: VEHICLES_PATH },
 			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
 		],
 	};

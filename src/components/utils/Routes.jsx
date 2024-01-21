@@ -6,7 +6,7 @@ import {
 	ROOT_PATH,
 	LOGOUT_PATH,
 	CASES_PATH,
-	CLIENTS_PATH,
+	VEHICLES_PATH,
 	PAYMENTS_PATH,
 	NEW,
 	PAYOUTS_PATH,
@@ -26,9 +26,9 @@ const Login = lazy(() => import('../../pages/Login'));
 const Payments = lazy(() => import('../../pages/Payments'));
 const Payment = lazy(() => import('../../pages/Payment'));
 
-const CreateClient = lazy(() => import('../../pages/CreateClient'));
-const Clients = lazy(() => import('../../pages/Clients'));
-const Client = lazy(() => import('../../pages/Client'));
+const CreateVehicle = lazy(() => import('../../pages/CreateVehicle'));
+const Vehicles = lazy(() => import('../../pages/Vehicles'));
+const Vehicle = lazy(() => import('../../pages/Vehicle'));
 
 const CreateCase = lazy(() => import('../../pages/CreateCase'));
 const Cases = lazy(() => import('../../pages/Cases'));
@@ -51,10 +51,10 @@ function Routes() {
 						<Route path='/:id' component={Case} />
 						<Route path={NEW} component={CreateCase} />
 					</Route>
-					<Route path={CLIENTS_PATH} component={MatchSeller}>
-						<Route path={ROOT_PATH} component={Clients} />
-						<Route path='/:id' component={Client} />
-						<Route path={NEW} component={CreateClient} />
+					<Route path={VEHICLES_PATH} component={MatchSeller}>
+						<Route path={ROOT_PATH} component={Vehicles} />
+						<Route path='/:id' component={Vehicle} />
+						<Route path={NEW} component={CreateVehicle} />
 					</Route>
 					<Route path={PAYMENTS_PATH} component={MatchSeller}>
 						<Route path='/:id' component={Payment} />

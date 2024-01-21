@@ -1,7 +1,7 @@
 import { createForm, setValue, valiForm } from '@modular-forms/solid';
 import { useNavigate } from '@solidjs/router';
-import { clientSellerSchema } from '../../schemas/clientSchema';
-import { createClient } from '../../clients/client.client';
+import { vehicleSellerSchema } from '../../schemas/clientSchema';
+import { createVehicle } from '../../clients/vehicle.client';
 import SingleSelect from '../selects/SingleSelect';
 import SuccessAlert from '../alerts/SuccesAlert';
 import NumberInput from '../inputs/NumberInput';
@@ -16,10 +16,10 @@ import Button from '../buttons/Button';
  * @param {Array} props.brands
  * @returns
  */
-function CreateClientForm(props) {
+function CreateVehicleForm(props) {
 	const navigate = useNavigate();
 	const [form, { Form, Field }] = createForm({
-		validate: valiForm(clientSellerSchema),
+		validate: valiForm(vehicleSellerSchema),
 		initialValues: { id: '', color: 0, marca: 0, modelo: undefined },
 	});
 
@@ -28,7 +28,7 @@ function CreateClientForm(props) {
 	const handleSubmit = (data, event) => {
 		event.preventDefault();
 		const upperData = { ...data, id: data.id.toUpperCase() };
-		createClient(upperData)
+		createVehicle(upperData)
 			.then(res => {
 				SuccessAlert('Creado con éxito');
 				handleBack();
@@ -108,4 +108,4 @@ function CreateClientForm(props) {
 	);
 }
 
-export default CreateClientForm;
+export default CreateVehicleForm;

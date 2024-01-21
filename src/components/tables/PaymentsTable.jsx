@@ -24,7 +24,7 @@ function PaymentsTable(props) {
 					<For each={props.payments}>
 						{payment => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
-								<td class='p-4 w-1/6 whitespace-nowrap'>{payment.cliente}</td>
+								<td class='p-4 w-1/6 whitespace-nowrap'>{payment.vehiculo}</td>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{payment.comision}</td>
 								<td class='p-4 w-1/6 whitespace-nowrap'>
 									{payment.pago ? dayjs(payment.pago).format('DD/MM/YYYY') : ''}
