@@ -23,7 +23,7 @@ function Payments() {
 
 	return (
 		<Show when={!isRouting()}>
-			<div className='flex-1 max-w-full '>
+			<div class='flex-1 max-w-full '>
 				<div class='w-full md:w-1/2 md:mx-auto md:flex justify-end'>
 					<SearchInput id='payments-cases' search={doSearch} />
 				</div>

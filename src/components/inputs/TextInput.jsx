@@ -11,7 +11,7 @@
  */
 function TextInput(props) {
 	return (
-		<div className='w-full'>
+		<div class='w-full'>
 			<label class='font-semibold' htmlFor={props.id}>
 				{props.label}
 			</label>

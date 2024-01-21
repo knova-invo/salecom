@@ -32,7 +32,7 @@ function Login() {
 		<Show when={!token()} fallback={<Navigate href={ROOT_REDIRECT_PATH} end={true} />}>
 			<Form class='my-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
 				<div class='flex flex-col justify-center gap-6 p-8 m-4 bg-white rounded-md border border-gray-100 shadow-md'>
-					<h1 className='text-center text-2xl font-bold'>Inicio de sesión</h1>
+					<h1 class='text-center text-2xl font-bold'>Inicio de sesión</h1>
 					<Field name='email'>
 						{(field, props) => (
 							<TextInput

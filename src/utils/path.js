@@ -16,4 +16,8 @@ export const PAYMENTS_PATH = '/payments';
 
 export const PAYOUTS_PATH = '/payouts';
 
+export const HISTORY_PAYOUTS_PATH = '/phistory';
+
 export const REVIEWS_PATH = '/reviews';
+
+export const HISTORY_REVIEWS_PATH = '/rhistory';

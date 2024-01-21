@@ -11,6 +11,8 @@ import {
 	NEW,
 	PAYOUTS_PATH,
 	REVIEWS_PATH,
+	HISTORY_REVIEWS_PATH,
+	HISTORY_PAYOUTS_PATH,
 } from '../../utils/path';
 import NavContainer from '../containers/NavContainer';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -18,6 +20,8 @@ import MatchSeller from './MatchSeller';
 import MatchHome from './MatchHome';
 import MathcTreasurer from './MathcTreasurer';
 import MatchReviewer from './MatchReviewer';
+import RHistory from '../../pages/RHistory';
+import PHistory from '../../pages/PHistory';
 
 const NotFound = lazy(() => import('../../pages/NotFound'));
 const Logout = lazy(() => import('../../pages/Logout'));
@@ -64,9 +68,15 @@ function Routes() {
 						<Route path='/:id' component={Payout} />
 						<Route path={ROOT_PATH} component={Payouts} />
 					</Route>
+					<Route path={HISTORY_PAYOUTS_PATH} component={MathcTreasurer}>
+						<Route path={ROOT_PATH} component={PHistory} />
+					</Route>
 					<Route path={REVIEWS_PATH} component={MatchReviewer}>
-						<Route path='/:id' component={Reviews} />
-						<Route path={ROOT_PATH} component={Review} />
+						<Route path='/:id' component={Review} />
+						<Route path={ROOT_PATH} component={Reviews} />
+					</Route>
+					<Route path={HISTORY_REVIEWS_PATH} component={MatchReviewer}>
+						<Route path={ROOT_PATH} component={RHistory} />
 					</Route>
 				</Route>
 				<Route path={LOGOUT_PATH} component={Logout} />

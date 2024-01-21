@@ -1,10 +1,20 @@
 import { FaSolidMoneyBill } from 'solid-icons/fa';
 import { A } from '@solidjs/router';
+import { AiOutlineHistory } from 'solid-icons/ai';
 import { IoLogOutOutline } from 'solid-icons/io';
 import { FaSolidCarSide } from 'solid-icons/fa';
 import { IoDocumentText } from 'solid-icons/io';
 import { For } from 'solid-js';
-import { CASES_PATH, VEHICLES_PATH, LOGOUT_PATH, PAYMENTS_PATH, PAYOUTS_PATH, REVIEWS_PATH } from '../../utils/path';
+import {
+	CASES_PATH,
+	VEHICLES_PATH,
+	LOGOUT_PATH,
+	PAYMENTS_PATH,
+	PAYOUTS_PATH,
+	REVIEWS_PATH,
+	HISTORY_REVIEWS_PATH,
+	HISTORY_PAYOUTS_PATH,
+} from '../../utils/path';
 import Role from '../utils/Role';
 
 const unSelected =
@@ -16,8 +26,14 @@ const selected =
 function BarNav() {
 	const { role } = Role;
 	const pages = {
-		taller: [{ name: 'Casos', icon: <IoDocumentText size={32} />, path: REVIEWS_PATH }],
-		tesorera: [{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYOUTS_PATH }],
+		taller: [
+			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: REVIEWS_PATH },
+			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_REVIEWS_PATH },
+		],
+		tesorera: [
+			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYOUTS_PATH },
+			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_PAYOUTS_PATH },
+		],
 		vendedor: [
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
 			{ name: 'Vehículs', icon: <FaSolidCarSide size={32} />, path: VEHICLES_PATH },
