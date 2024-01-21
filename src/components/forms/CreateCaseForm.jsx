@@ -45,7 +45,7 @@ function CreateCaseForm(props) {
 	};
 
 	return (
-		<Form class='flex-1 w-full max-h-[85vh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
+		<Form class='flex-1 w-full max-h-[85dvh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
 			<div class='flex flex-col justify-center p-4 mx-1 my-4 bg-white border-gray-100 shadow-md rounded-md border'>
 				<h1 class='text-center text-2xl font-bold mb-4'>Añadir Caso</h1>
 				<Field name='cliente'>
@@ -56,16 +56,16 @@ function CreateCaseForm(props) {
 							value={field.value}
 							disabled={option => field.value === option.label}
 							labelOption='id'
-							label='Cliente'
+							label='Vehículo'
 							error={field.error}
-							placeholer='Selecciona un cliente'
+							placeholer='Selecciona un vehículo'
 							emptyPlaceholder='No existe'
 							setValue={value => setValue(form, 'cliente', value ? value.id : '')}
 						/>
 					)}
 				</Field>
 				<A href={NEW_CLIENTS_PATH} class='ml-auto text-sm font-semibold text-blue-600'>
-					Crear un nuevo cliente
+					Crear un nuevo vehículo
 				</A>
 				<Field name='servicios'>
 					{field => (
@@ -77,7 +77,7 @@ function CreateCaseForm(props) {
 							labelOption='nombre'
 							label='Servicios'
 							error={field.error}
-							placeholer='Selecciona un cliente'
+							placeholer='Selecciona un vehículo'
 							emptyPlaceholder='No existe'
 							setValue={value => setValue(form, 'servicios', value ? value.map(item => item.id) : [])}
 						/>

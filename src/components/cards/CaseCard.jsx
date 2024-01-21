@@ -11,7 +11,7 @@ function CaseCard(props) {
 	const params = useParams();
 	const data = createMemo(() => {
 		return [
-			{ key: 'Cliente', value: props.case.cliente },
+			{ key: 'Vehículo', value: props.case.cliente },
 			{
 				key: 'Fecha de registro',
 				value: props.case.date_created ? dayjs(props.case.date_created).format('DD/MM/YYYY') : '',

@@ -1,11 +1,7 @@
-import { createEffect, createMemo } from 'solid-js';
+import { createMemo } from 'solid-js';
 
 function NumberInput(props) {
-	const getValue = createMemo(prevValue => (!Number.isNaN(props.value) ? props.value : prevValue));
-
-	createEffect(() => {
-		props.value;
-	});
+	const getValue = createMemo(prevValue => (!Number.isNaN(props.value) ? props.value : undefined));
 
 	return (
 		<div>

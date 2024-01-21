@@ -2,7 +2,7 @@ import { For, Match, Switch } from 'solid-js';
 import { A } from '@solidjs/router';
 import { CASES_PATH } from '../../utils/path';
 
-const titles = ['ID', 'Cliente', 'Estado', 'Detalles'];
+const titles = ['ID', 'Vehículo', 'Estado', 'Detalles'];
 
 /**
  *
@@ -12,7 +12,7 @@ const titles = ['ID', 'Cliente', 'Estado', 'Detalles'];
  */
 function CasesTable(props) {
 	return (
-		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
+		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75dvh]'>
 			<table class='table-auto w-full text-center'>
 				<thead class='sticky top-0'>
 					<tr class='bg-gray-200 text-base font-semibold'>

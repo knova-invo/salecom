@@ -3,7 +3,7 @@ import { For } from 'solid-js';
 import dayjs from 'dayjs';
 import { PAYMENTS_PATH } from '../../utils/path';
 
-const titles = ['Cliente', 'Comisión', 'Fecha de pago', 'Detalles'];
+const titles = ['Vehículo', 'Comisión', 'Fecha de pago', 'Detalles'];
 
 /**
  *
@@ -13,7 +13,7 @@ const titles = ['Cliente', 'Comisión', 'Fecha de pago', 'Detalles'];
  */
 function PaymentsTable(props) {
 	return (
-		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
+		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75dvh]'>
 			<table class='w-full text-center'>
 				<thead class='sticky top-0'>
 					<tr class='bg-gray-200 text-base font-semibold'>

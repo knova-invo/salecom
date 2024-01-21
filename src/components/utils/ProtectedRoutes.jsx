@@ -16,10 +16,6 @@ function ProtectedRoutes(props) {
 		}
 	});
 
-	createEffect(() => {
-		console.log(role());
-	});
-
 	return (
 		<Show when={token()} fallback={<Login />}>
 			{props.children}

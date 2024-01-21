@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 import { For } from 'solid-js';
 import { CLIENTS_PATH } from '../../utils/path';
 
-const titles = ['Cliente', 'Detalles'];
+const titles = ['Vehículo', 'Detalles'];
 
 /**
  *
@@ -12,7 +12,7 @@ const titles = ['Cliente', 'Detalles'];
  */
 function ClientsTable(props) {
 	return (
-		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75vh]'>
+		<div class='mt-2 overflow-auto bg-white rounded-md shadow-md max-h-[75dvh]'>
 			<table class='table-auto w-full text-center'>
 				<thead class='sticky top-0'>
 					<tr class='bg-gray-200 text-base font-semibold'>

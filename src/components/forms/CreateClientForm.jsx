@@ -20,7 +20,7 @@ function CreateClientForm(props) {
 	const navigate = useNavigate();
 	const [form, { Form, Field }] = createForm({
 		validate: valiForm(clientSellerSchema),
-		initialValues: { id: '', color: 0, marca: 0 },
+		initialValues: { id: '', color: 0, marca: 0, modelo: undefined },
 	});
 
 	const handleBack = () => navigate(-1);
@@ -28,14 +28,12 @@ function CreateClientForm(props) {
 	const handleSubmit = (data, event) => {
 		event.preventDefault();
 		const upperData = { ...data, id: data.id.toUpperCase() };
-		console.log(upperData);
 		createClient(upperData)
 			.then(res => {
 				SuccessAlert('Creado con éxito');
 				handleBack();
 			})
 			.catch(err => {
-				console.log(err);
 				if (err.errors[0].extensions.code === 'RECORD_NOT_UNIQUE') {
 					return ErrorAlert('Placa ya registrada');
 				}
@@ -44,9 +42,9 @@ function CreateClientForm(props) {
 	};
 
 	return (
-		<Form class='flex-1 w-full max-h-[85vh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
+		<Form class='flex-1 w-full max-h-[85dvh] m-auto overflow-auto md:m-auto md:w-2/5 xl:w-1/4' onSubmit={handleSubmit}>
 			<div class='flex flex-col justify-center gap-4 p-4 mx-1 my-4 bg-white border-gray-100 shadow-md rounded-md border'>
-				<h1 class='text-center text-2xl font-bold'>Añadir Cliente</h1>
+				<h1 class='text-center text-2xl font-bold'>Añadir Vehículo</h1>
 				<Field name='id'>
 					{(field, props) => (
 						<TextInput
@@ -103,7 +101,7 @@ function CreateClientForm(props) {
 					)}
 				</Field>
 				<Button type='submit' variant='success'>
-					Crear cliente
+					Crear vehículo
 				</Button>
 			</div>
 		</Form>

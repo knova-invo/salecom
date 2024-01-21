@@ -28,7 +28,7 @@ function ClientCard(props) {
 
 	return (
 		<div class='mt-2 bg-white rounded-md shadow-md p-4 text-left'>
-			<h1 class='text-2xl font-bold px-2'>Cliente {params.id}</h1>
+			<h1 class='text-2xl font-bold px-2'> {params.id}</h1>
 			<For each={data()}>
 				{item => (
 					<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
