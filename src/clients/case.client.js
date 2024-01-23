@@ -45,6 +45,8 @@ export const getCasesTable = (page, search) => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -66,6 +68,8 @@ export const getCountCasesTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**

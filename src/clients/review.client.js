@@ -32,6 +32,8 @@ export const getReviewsTable = (page, search) => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -53,6 +55,8 @@ export const getCountReviewsTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -79,6 +83,8 @@ export const getReviewsHisTable = (page, search) => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -100,6 +106,8 @@ export const getCountReviewsHisTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
