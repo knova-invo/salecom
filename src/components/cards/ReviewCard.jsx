@@ -12,7 +12,7 @@ function ReviewCard(props) {
 	const data = createMemo(() => {
 		return [
 			{ key: 'Vehículo', value: props.review.vehiculo.id },
-			{ key: 'Color', value: props.review.vehiculo.color.nombre || '' },
+			{ key: 'Color', value: props.review.vehiculo.color || '' },
 			{ key: 'Marca', value: props.review.vehiculo.marca.nombre || '' },
 			{ key: 'Modelo', value: props.review.vehiculo.modelo || '' },
 			{

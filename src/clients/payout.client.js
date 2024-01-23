@@ -33,7 +33,6 @@ export const getPayoutsTable = (page, search) => ({
 						},
 					],
 				},
-
 				...(search && { search: search }),
 			}),
 		),

@@ -12,8 +12,8 @@ function CreateReviewCard(props) {
 	const data = createMemo(() => {
 		return [
 			{ key: 'Vehículo', value: props.review.vehiculo.id },
-			{ key: 'Color', value: props.review.vehiculo.color.nombre || '' },
 			{ key: 'Marca', value: props.review.vehiculo.marca.nombre || '' },
+			{ key: 'Color', value: props.review.vehiculo.color || '' },
 			{ key: 'Modelo', value: props.review.vehiculo.modelo || '' },
 			{
 				key: 'Vendedor',

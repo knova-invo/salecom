@@ -3,11 +3,10 @@ import { IoArrowBackOutline } from 'solid-icons/io';
 import { createQuery } from '@tanstack/solid-query';
 import { Match, Switch } from 'solid-js';
 import CreateVehicleForm from '../components/forms/CreateVehicleForm';
-import { getBrands, getColors } from '../clients/vehicle.client';
+import { getBrands } from '../clients/vehicle.client';
 import Loading from './Loading';
 
 function CreateClient() {
-	const colors = createQuery(getColors);
 	const brands = createQuery(getBrands);
 	const navigate = useNavigate();
 	const isRouting = useIsRouting();
@@ -27,14 +26,14 @@ function CreateClient() {
 					</button>
 				</div>
 				<Switch>
-					<Match when={colors.isPending || brands.isPending || colors.isRefetching || brands.isRefetching}>
+					<Match when={brands.isPending || brands.isRefetching}>
 						<Loading />
 					</Match>
-					<Match when={colors.isError || brands.isError}>
+					<Match when={brands.isError}>
 						<div>Error</div>
 					</Match>
-					<Match when={colors.isSuccess && brands.isSuccess}>
-						<CreateVehicleForm colors={colors.data} brands={brands.data} />
+					<Match when={brands.isSuccess}>
+						<CreateVehicleForm brands={brands.data} />
 					</Match>
 				</Switch>
 			</div>

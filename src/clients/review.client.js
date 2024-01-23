@@ -19,7 +19,7 @@ export const getReviewsTable = (page, search) => ({
 				limit: limit,
 				fields: [
 					'id',
-					{ vehiculo: ['id', 'modelo', { color: ['nombre'] }, { marca: ['nombre'] }] },
+					{ vehiculo: ['id', 'modelo', 'color', { marca: ['nombre'] }] },
 					{ vendedor: ['first_name', 'last_name'] },
 				],
 				sort: ['-date_created'],
@@ -113,7 +113,7 @@ export const getReview = id => ({
 		await client.request(
 			readItem(cases, id, {
 				fields: [
-					{ vehiculo: ['id', 'modelo', { color: ['nombre'] }, { marca: ['nombre'] }] },
+					{ vehiculo: ['id', 'modelo', 'color', { marca: ['nombre'] }] },
 					'pago',
 					'comision',
 					'date_created',

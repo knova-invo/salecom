@@ -20,7 +20,7 @@ function CreateVehicleForm(props) {
 	const navigate = useNavigate();
 	const [form, { Form, Field }] = createForm({
 		validate: valiForm(vehicleSellerSchema),
-		initialValues: { id: '', color: 0, marca: 0, modelo: undefined },
+		initialValues: { id: '', color: '', marca: 0, modelo: undefined },
 	});
 
 	const handleBack = () => navigate(-1);
@@ -58,21 +58,7 @@ function CreateVehicleForm(props) {
 						/>
 					)}
 				</Field>
-				<Field name='color'>
-					{field => (
-						<SingleSelect
-							id='color-field'
-							options={props.colors}
-							labelOption='nombre'
-							disabled={option => field.value === option.value.id}
-							label='Color'
-							error={field.error}
-							placeholer='Selecciona el color'
-							emptyPlaceholder='No existe'
-							setValue={value => setValue(form, 'color', value ? value.id : 0)}
-						/>
-					)}
-				</Field>
+
 				<Field name='marca'>
 					{field => (
 						<SingleSelect
@@ -85,6 +71,18 @@ function CreateVehicleForm(props) {
 							placeholer='Selecciona la marca'
 							emptyPlaceholder='No existe'
 							setValue={value => setValue(form, 'marca', value ? value.id : 0)}
+						/>
+					)}
+				</Field>
+				<Field name='color'>
+					{(field, props) => (
+						<TextInput
+							placeholder='Rojo'
+							label='Color'
+							id='color-field'
+							error={field.error}
+							value={field.value}
+							{...props}
 						/>
 					)}
 				</Field>

@@ -1,10 +1,9 @@
 version: '3.8'
 
 services:
-
+  
   directus:
     image: directus/directus:10.8.3
-    container_name: directus
     restart: unless-stopped
     ports:
       - "8200:8055"
@@ -27,10 +26,17 @@ services:
       DB_PASSWORD: directus # use a safe password
       ADMIN_EMAIL: 'admin@example.com'
       ADMIN_PASSWORD: 'd1r3ctu5' # use a safe password
-
+  frontend:
+    restart: unless-stopped
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - directus
+    ports:
+      - "80:80"
   database:
     image: postgis/postgis:14-master
-    container_name: database
     restart: unless-stopped
     volumes:
       - ./data/database:/var/lib/postgresql/data
@@ -39,8 +45,7 @@ services:
     environment:
       POSTGRES_USER: directus
       POSTGRES_PASSWORD: directus # use a safe password
-      POSTGRES_DB: directus
-
+      POSTGRES_DB: directus  
 networks:
   directus:
 

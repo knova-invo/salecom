@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 import { For } from 'solid-js';
 import { REVIEWS_PATH } from '../../utils/path';
 
-const titles = ['Vehículo', 'Vendedor', 'Comisionar'];
+const titles = ['Vehículo', 'Vendedor', 'Comisión'];
 
 /**
  *
@@ -24,12 +24,12 @@ function ReviewsTable(props) {
 						{item => (
 							<tr class='hover:bg-gray-100 border-b text-sm'>
 								<td class='p-4 w-1/6 whitespace-nowrap'>{`${item.vehiculo.id} ${item.vehiculo?.marca.nombre || ''} ${
-									item.vehiculo?.color.nombre || ''
+									item.vehiculo?.color || ''
 								} ${item.vehiculo.modelo || ''}`}</td>
 								<td class='p-4 w-1/6'>{`${item.vendedor?.first_name || ''} ${item.vendedor?.last_name || ''}`}</td>
 								<td class='w-1/6 whitespace-nowrap'>
 									<A class='text-sm font-semibold text-blue-600' href={`${REVIEWS_PATH}/${item.id}`}>
-										Comisionar
+										Agregar
 									</A>
 								</td>
 							</tr>

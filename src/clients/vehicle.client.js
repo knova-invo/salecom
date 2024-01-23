@@ -2,23 +2,6 @@ import { createItem, readItem, readItems } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
-const colors = 'colores';
-
-/**
- * Get the colors
- * @returns
- */
-export const getColors = () => ({
-	queryKey: ['colors'],
-	queryFn: async () =>
-		await client.request(
-			readItems(colors, {
-				limit: -1,
-				fields: ['id', 'nombre', 'color'],
-			}),
-		),
-});
-
 const brands = 'marcas';
 
 /**
@@ -49,6 +32,7 @@ export const getVehiclesIds = () => ({
 			readItems(vehicles, {
 				limit: -1,
 				fields: ['id'],
+				sort: ['-date_created'],
 			}),
 		),
 });
@@ -67,6 +51,7 @@ export const getVehiclesTable = (page, search) => ({
 				page: page,
 				limit: limit,
 				fields: ['id'],
+				sort: ['-date_created'],
 				...(search && { search: search }),
 			}),
 		),
@@ -98,16 +83,7 @@ export const getVehicle = id => ({
 	queryFn: async () =>
 		await client.request(
 			readItem(vehicles, id, {
-				fields: [
-					'modelo',
-					'nombre',
-					'cedula',
-					'telefono',
-					'correo',
-					'date_created',
-					{ marca: ['nombre'] },
-					{ color: ['nombre'] },
-				],
+				fields: ['modelo', 'date_created', 'color', { marca: ['nombre'] }],
 			}),
 		),
 });

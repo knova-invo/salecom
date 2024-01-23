@@ -16,13 +16,9 @@ function VehicleCard(props) {
 				key: 'Registro',
 				value: props.vehicle.date_created ? dayjs(props.vehicle.date_created).format('DD/MM/YYYY') : '',
 			},
-			{ key: 'Color', value: props.vehicle.color.nombre },
 			{ key: 'Marca', value: props.vehicle.marca.nombre },
 			{ key: 'Modelo', value: props.vehicle.modelo },
-			{ key: 'Nombre', value: props.vehicle.nombre },
-			{ key: 'Cedula', value: props.vehicle.cedula },
-			{ key: 'Teléfono', value: props.vehicle.telefono },
-			{ key: 'Correo', value: props.vehicle.correo },
+			{ key: 'Color', value: props.vehicle.color },
 		];
 	});
 

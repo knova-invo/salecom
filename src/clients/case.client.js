@@ -35,6 +35,7 @@ export const getCasesTable = (page, search) => ({
 				page: page,
 				limit: limit,
 				fields: ['id', 'vehiculo', 'date_created', 'diagnostico'],
+				sort: ['-date_created'],
 				filter: {
 					pago: {
 						_null: true,
@@ -80,6 +81,7 @@ export const getPaymentsTable = (page, search) => ({
 			readItems(cases, {
 				page: page,
 				limit: limit,
+				sort: ['-pago'],
 				fields: ['id', 'vehiculo', 'pago', 'referencia', 'comision'],
 				filter: {
 					pago: {
