@@ -65,7 +65,7 @@ function CreateCaseForm(props) {
 					)}
 				</Field>
 				<A href={NEW_VEHICLES_PATH} class='ml-auto text-sm font-semibold text-blue-600'>
-					Crear un nuevo vehículo
+					Añadir un nuevo vehículo
 				</A>
 				<Field name='servicios'>
 					{field => (
@@ -84,7 +84,7 @@ function CreateCaseForm(props) {
 					)}
 				</Field>
 				<Button type='submit' variant='success' class='mt-4'>
-					Crear Caso
+					Añadir Caso
 				</Button>
 			</div>
 		</Form>

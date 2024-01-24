@@ -36,7 +36,7 @@ function BarNav() {
 		],
 		vendedor: [
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
-			{ name: 'Vehículs', icon: <FaSolidCarSide size={32} />, path: VEHICLES_PATH },
+			{ name: 'Vehículos', icon: <FaSolidCarSide size={32} />, path: VEHICLES_PATH },
 			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
 		],
 	};

@@ -99,7 +99,7 @@ function CreateVehicleForm(props) {
 					)}
 				</Field>
 				<Button type='submit' variant='success'>
-					Crear vehículo
+					Añadir vehículo
 				</Button>
 			</div>
 		</Form>

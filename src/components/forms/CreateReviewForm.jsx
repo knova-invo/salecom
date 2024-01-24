@@ -43,7 +43,9 @@ function CreateReviewForm() {
 						/>
 					)}
 				</Field>
-				<Button type='submit'>Pagar</Button>
+				<Button variant='success' type='submit'>
+					Pagar
+				</Button>
 			</div>
 		</Form>
 	);
