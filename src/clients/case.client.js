@@ -95,6 +95,8 @@ export const getPaymentsTable = (page, search) => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -116,6 +118,8 @@ export const getCountPaymentsTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**

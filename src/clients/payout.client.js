@@ -96,6 +96,8 @@ export const getPayoutsHisTable = (page, search) => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
@@ -117,6 +119,8 @@ export const getCountPayoutsHisTable = search => ({
 				...(search && { search: search }),
 			}),
 		),
+	refetchInterval: 300000,
+	refetchOnWindowFocus: true,
 });
 
 /**
