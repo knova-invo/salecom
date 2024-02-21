@@ -28,6 +28,7 @@ function TextInput(props) {
 						: 'w-full p-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300'
 				}
 			/>
+			{props.error && <div class={'text-sm text-red-600'}>{props.error}</div>}
 		</div>
 	);
 }

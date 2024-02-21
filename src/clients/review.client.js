@@ -28,7 +28,6 @@ export const getReviewsTable = (page, search) => ({
 						_null: true,
 					},
 				},
-
 				...(search && { search: search }),
 			}),
 		),
