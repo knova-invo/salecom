@@ -1,5 +1,5 @@
 import { useParams } from '@solidjs/router';
-import { For, Show, createMemo, createSignal } from 'solid-js';
+import { For, Match, Switch, createMemo, createSignal } from 'solid-js';
 import dayjs from 'dayjs';
 import { confirmPayment } from '../../clients/case.client';
 import SuccessAlert from '../alerts/SuccesAlert';
@@ -27,17 +27,17 @@ function PaymentCard(props) {
 
 	const data = createMemo(() => {
 		return [
-			{ key: 'Comisión', value: props.payment.comision },
-			{
-				key: 'Pago',
-				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
-			},
+			{ key: 'ID del Caso', value: params.id },
 			{
 				key: 'Registro',
 				value: props.payment.date_created ? dayjs(props.payment.date_created).format('DD/MM/YYYY') : '',
 			},
-			{ key: 'ID del Caso', value: params.id },
 			{ key: 'Vehículo del caso', value: props.payment.vehiculo },
+			{ key: 'Comisión', value: props.payment.comision },
+			{
+				key: 'Pago',
+				value: props.payment.pago ? dayjs(props.payment.pago).format('DD/MM/YYYY') : '',
+			},
 			{ key: 'Referencia de pago', value: props.payment.referencia },
 		];
 	});
@@ -54,16 +54,16 @@ function PaymentCard(props) {
 			</For>
 			<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
 				<p class='text-gray-600'>Recibido</p>
-				<Show
-					when={payConfirm()}
-					fallback={
+				<Switch fallback={<p className='font-semibold'>Confirmado</p>}>
+					<Match when={!props.payment.pago}>
+						<p className='font-semibold'>Pendiente de pago</p>
+					</Match>
+					<Match when={!payConfirm()}>
 						<Button onClick={confirm} class='mx-auto ml-0'>
 							Confirmar
 						</Button>
-					}
-				>
-					<p className='font-semibold'>Confirmado</p>
-				</Show>
+					</Match>
+				</Switch>
 			</div>
 		</div>
 	);

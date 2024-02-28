@@ -19,6 +19,7 @@ function ReviewCard(props) {
 				key: 'Vendedor',
 				value: `${props.review.vendedor?.first_name || ''} ${props.review.vendedor?.last_name || ''}`,
 			},
+			{ key: 'Servicios', value: props.review.servicios.map(item => item.servicios_id.nombre).join(', ') },
 			{
 				key: 'Registro',
 				value: props.review.date_created ? dayjs(props.review.date_created).format('DD/MM/YYYY') : '',
@@ -32,7 +33,7 @@ function ReviewCard(props) {
 				value: props.review.pago ? dayjs(props.review.pago).format('DD/MM/YYYY') : '',
 			},
 			{ key: 'Comisión', value: props.review.comision },
-			{ key: 'Servicios', value: props.review.servicios.map(item => item.servicios_id.nombre).join(', ') },
+			{ key: 'Recibido', value: props.review.recibido ? 'Confirmado' : 'Sin confirmar' },
 		];
 	});
 	return (
@@ -46,12 +47,6 @@ function ReviewCard(props) {
 					</div>
 				)}
 			</For>
-			<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
-				<p class='text-gray-600'>Recibido</p>
-				<Show when={props.review.recibido} fallback={<p>Sin confirmar</p>}>
-					<p className='font-semibold'>Confirmado</p>
-				</Show>
-			</div>
 		</div>
 	);
 }

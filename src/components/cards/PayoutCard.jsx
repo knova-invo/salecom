@@ -31,6 +31,7 @@ function PayoutCard(props) {
 			{ key: 'Comisión', value: props.payout.comision },
 			{ key: 'Referencia', value: props.payout.referencia },
 			{ key: 'Servicios', value: props.payout.servicios.map(item => item.servicios_id.nombre).join(', ') },
+			{ key: 'Recibido', value: props.payout.recibido ? 'Confirmado' : 'Sin confirmar' },
 		];
 	});
 	return (
@@ -44,12 +45,6 @@ function PayoutCard(props) {
 					</div>
 				)}
 			</For>
-			<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
-				<p class='text-gray-600'>Recibido</p>
-				<Show when={props.payout.recibido} fallback={<p>Sin confirmar</p>}>
-					<p className='font-semibold'>Confirmado</p>
-				</Show>
-			</div>
 		</div>
 	);
 }

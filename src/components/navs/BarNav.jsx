@@ -16,6 +16,7 @@ import {
 	HISTORY_PAYOUTS_PATH,
 } from '../../utils/path';
 import Role from '../utils/Role';
+import { reviewer, seller, treasurer } from '../../utils/constants';
 
 const unSelected =
 	'flex flex-col items-center justify-center text-center mx-auto px-4 w-full text-gray-400 border-b-2 border-transparent group-hover:text-indigo-500 group-hover:text-indigo-500';
@@ -26,15 +27,15 @@ const selected =
 function BarNav() {
 	const { role } = Role;
 	const pages = {
-		taller: [
+		[reviewer]: [
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: REVIEWS_PATH },
 			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_REVIEWS_PATH },
 		],
-		tesoreria: [
+		[treasurer]: [
 			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYOUTS_PATH },
 			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_PAYOUTS_PATH },
 		],
-		vendedor: [
+		[seller]: [
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: CASES_PATH },
 			{ name: 'Vehículos', icon: <FaSolidCarSide size={32} />, path: VEHICLES_PATH },
 			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYMENTS_PATH },
