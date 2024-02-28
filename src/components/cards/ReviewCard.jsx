@@ -46,6 +46,12 @@ function ReviewCard(props) {
 					</div>
 				)}
 			</For>
+			<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
+				<p class='text-gray-600'>Recibido</p>
+				<Show when={props.review.recibido} fallback={<p>Sin confirmar</p>}>
+					<p className='font-semibold'>Confirmado</p>
+				</Show>
+			</div>
 		</div>
 	);
 }

@@ -141,6 +141,7 @@ export const getPayout = id => ({
 					'diagnostico',
 					'referencia',
 					'pago',
+					'recibido',
 					{ vendedor: ['first_name', 'last_name'] },
 					{ servicios: [{ servicios_id: ['nombre'] }] },
 				],

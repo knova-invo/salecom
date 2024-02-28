@@ -30,7 +30,7 @@ function BarNav() {
 			{ name: 'Casos', icon: <IoDocumentText size={32} />, path: REVIEWS_PATH },
 			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_REVIEWS_PATH },
 		],
-		tesorera: [
+		tesoreria: [
 			{ name: 'Pagos', icon: <FaSolidMoneyBill size={32} />, path: PAYOUTS_PATH },
 			{ name: 'Histórico', icon: <AiOutlineHistory size={32} />, path: HISTORY_PAYOUTS_PATH },
 		],

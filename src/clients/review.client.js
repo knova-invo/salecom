@@ -126,6 +126,7 @@ export const getReview = id => ({
 					'date_created',
 					'diagnostico',
 					'pago',
+					'recibido',
 					{ vendedor: ['first_name', 'last_name'] },
 					{ servicios: [{ servicios_id: ['nombre'] }] },
 				],

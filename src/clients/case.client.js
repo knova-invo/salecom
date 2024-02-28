@@ -1,4 +1,4 @@
-import { createItem, readItem, readItems } from '@directus/sdk';
+import { createItem, readItem, readItems, updateItem } from '@directus/sdk';
 import { limit } from '../utils/constants';
 import { client } from './client';
 
@@ -153,8 +153,10 @@ export const getPayment = id => ({
 	queryKey: ['payment', id],
 	queryFn: async () =>
 		await client.request(
-			readItem(cases, id, { fields: ['vehiculo', 'pago', 'referencia', 'comision', 'date_created'] }),
+			readItem(cases, id, { fields: ['vehiculo', 'pago', 'referencia', 'comision', 'date_created', 'recibido'] }),
 		),
 });
 
 export const createCase = async data => client.request(createItem(cases, data, { fields: ['id'] }));
+
+export const confirmPayment = async id => client.request(updateItem(cases, id, { recibido: true }));

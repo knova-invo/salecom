@@ -1,6 +1,10 @@
 import { useParams } from '@solidjs/router';
-import { For, createMemo } from 'solid-js';
+import { For, Show, createMemo, createSignal } from 'solid-js';
 import dayjs from 'dayjs';
+import { confirmPayment } from '../../clients/case.client';
+import SuccessAlert from '../alerts/SuccesAlert';
+import ErrorAlert from '../alerts/ErrorAlert';
+import Button from '../buttons/Button';
 
 /**
  *
@@ -10,6 +14,17 @@ import dayjs from 'dayjs';
  */
 function PaymentCard(props) {
 	const params = useParams();
+	const [payConfirm, setPayConfirm] = createSignal(props.payment?.recibido || false);
+
+	const confirm = () => {
+		confirmPayment(params.id)
+			.then(res => {
+				SuccessAlert('Confirmado realizado con éxito');
+				setPayConfirm(true);
+			})
+			.catch(err => ErrorAlert());
+	};
+
 	const data = createMemo(() => {
 		return [
 			{ key: 'Comisión', value: props.payment.comision },
@@ -37,6 +52,19 @@ function PaymentCard(props) {
 					</div>
 				)}
 			</For>
+			<div class='grid grid-cols-2 hover:bg-gray-50 space-y-0 p-2 border-b pt-6'>
+				<p class='text-gray-600'>Recibido</p>
+				<Show
+					when={payConfirm()}
+					fallback={
+						<Button onClick={confirm} class='mx-auto ml-0'>
+							Confirmar
+						</Button>
+					}
+				>
+					<p className='font-semibold'>Confirmado</p>
+				</Show>
+			</div>
 		</div>
 	);
 }
